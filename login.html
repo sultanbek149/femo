@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/dist/style.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-background">
+    <div class="max-w-2xl mx-auto my-8 p-5 bg-white rounded-xl shadow-md">
+
+        <div class="w-64 h-64 mx-auto mb-2">
+            <img src="src/assets/images/loginImg.png" alt="login">
+        </div>
+
+        <div class="text-center text-2xl font-bold text-gray-800 mb">
+            <p>Добро пожаловать обратно!</p>
+            <p>
+                Войдите в свой аккаунт и продолжи приключения
+            </p>
+        </div>
+
+        <!-- Ссылка на вход -->
+        <div class="text-center mt-2 mb-8">
+            <p class="text-sm text-gray-600">
+                Забыл пароль?
+                <a href="reset.html" class="text-primary font-bold underline underline-offset-2">Восстановить доступ</a>
+            </p>
+        </div>
+
+        <form class="space-y-6">
+            <div>
+                <label class="block text-sm text-gray-primary mb-1">Email</label>
+                <input type="email"
+                    class="w-full px-3 py-2 border rounded-xl border-gray-input focus:outline-none focus:border-black transition">
+            </div>
+
+            <div>
+                <label class="block text-sm text-primary mb-1">Пароль</label>
+                <input type="password"
+                    class="w-full px-3 py-2 border rounded-xl border-gray-input focus:outline-none focus:border-black transition">
+            </div>
+
+            <button type="submit" class="w-full bg-primary text-white py-3 rounded-full transition cursor-pointer">
+                Войти
+            </button>
+        </form>
+
+        <div class="text-center mt-6">
+            <p class="text-sm text-gray-600">
+                Нет аккаунта?
+                <a href="register.html" class="text-primary font-bold underline underline-offset-2">Зарегистрироваться</a>
+            </p>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

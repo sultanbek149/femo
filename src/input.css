@@ -1,0 +1,65 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./assets/fonts/ProximaNova-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./assets/fonts/Proxima Nova Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./assets/fonts/Proxima Nova Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./assets/fonts/Proxima Nova Semibold Italic.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./assets/fonts/Proxima Nova Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./assets/fonts/Proxima Nova Extrabold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./assets/fonts/Proxima Nova Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@theme {
+  --font-main: "Proxima Nova", sans-serif;
+
+  --color-primary: hsl(0, 0%, 13%);
+  --color-gray-primary: hsl(0, 0%, 38%);
+  --color-gray-input: hsl(0,0%,94%);
+  --color-gray-background: hsl(0, 0%, 92%);
+}
+
+* {
+  font-family: var(--font-main);
+  font-optical-sizing: auto;
+  font-style: normal;
+}
