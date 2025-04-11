@@ -1,5 +1,7 @@
 ```markdown
-# FEMO 
+# FEMO Project
+
+![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)
 
 Web development project using modern technologies
 
