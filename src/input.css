@@ -50,16 +50,60 @@
 }
 
 @theme {
-  --font-main: "Proxima Nova", sans-serif;
+  --font-main: 'Proxima Nova', sans-serif;
 
   --color-primary: hsl(0, 0%, 13%);
+  --color-orange-primary: hsl(30 90.7% 53.7%);
+  --color-orange-secondary: hsl(30, 93%, 95%);
+  --color-orange-third: hsl(30 90.7% 53.7%);
   --color-gray-primary: hsl(0, 0%, 38%);
-  --color-gray-input: hsl(0,0%,94%);
+  --color-gray-border: hsl(0, 0%, 94%);
   --color-gray-background: hsl(0, 0%, 92%);
+  --color-red-primary: hsl(356 81.6% 51%);
+  --color-red-secondary: hsl(356 80% 96.1%);
+  --color-violet: hsl(270 80% 96.1%);
 }
 
 * {
   font-family: var(--font-main);
   font-optical-sizing: auto;
   font-style: normal;
+}
+
+/* Global */
+.border-default {
+  @apply border-gray-border border;
+}
+
+.input-base {
+  @apply w-full rounded-xl px-3 py-2 transition focus:border-black focus:outline-none;
+}
+
+.sidebar {
+  @apply border-gray-border fixed z-20 flex h-full w-64 flex-col border-e bg-white transition lg:relative;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+}
+
+.chart-line {
+  fill: none;
+  stroke: #111827;
+  stroke-width: 2;
+}
+
+.chart-dot {
+  fill: #111827;
+}
+
+.chart-grid {
+  stroke: #e5e7eb;
+  stroke-width: 1;
 }
