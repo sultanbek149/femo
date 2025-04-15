@@ -53,15 +53,25 @@
   --font-main: 'Proxima Nova', sans-serif;
 
   --color-primary: hsl(0, 0%, 13%);
+
+  --color-blue-primary: hsl(206 73.8% 58%);
+
   --color-orange-primary: hsl(30 90.7% 53.7%);
   --color-orange-secondary: hsl(30, 93%, 95%);
   --color-orange-third: hsl(30 90.7% 53.7%);
+
   --color-gray-primary: hsl(0, 0%, 38%);
   --color-gray-border: hsl(0, 0%, 94%);
   --color-gray-background: hsl(0, 0%, 92%);
+
   --color-red-primary: hsl(356 81.6% 51%);
   --color-red-secondary: hsl(356 80% 96.1%);
-  --color-violet: hsl(270 80% 96.1%);
+
+  --color-violet-primary: hsl(270 77.3% 51.6%);
+  --color-violet-secondary: hsl(270 80% 96.1%);
+
+  --color-green-primary: hsl(147 86.5% 37.8%);
+  --color-green-secondary: hsl(148 52% 95.1%);
 }
 
 * {
@@ -85,6 +95,24 @@
 
 .sidebar {
   @apply border-gray-border fixed z-20 flex h-full w-64 flex-col border-e bg-white transition lg:relative;
+}
+
+.scrollbar {
+  @apply [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:bg-gray-400 [&::-webkit-scrollbar-track]:bg-transparent;
+}
+
+/* Table */
+
+.table-rate .table-tr {
+  @apply text-primary border-b border-gray-200 text-left text-[.765rem] font-bold tracking-wider uppercase;
+}
+
+.table-rate tbody td:first-child {
+  @apply text-center;
+}
+
+.p-table {
+  @apply px-6 py-3;
 }
 
 @media (max-width: 1024px) {
