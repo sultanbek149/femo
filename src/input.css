@@ -79,6 +79,10 @@
   @apply w-full rounded-xl px-3 py-2 transition focus:border-black focus:outline-none;
 }
 
+.custom-select {
+  @apply block cursor-pointer;
+}
+
 .sidebar {
   @apply border-gray-border fixed z-20 flex h-full w-64 flex-col border-e bg-white transition lg:relative;
 }
