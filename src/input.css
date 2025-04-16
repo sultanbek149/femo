@@ -61,6 +61,7 @@
   --color-orange-third: hsl(30 90.7% 53.7%);
 
   --color-gray-primary: hsl(0, 0%, 38%);
+  --color-gray-secondary: hsl(0 0% 44.7%);
   --color-gray-border: hsl(0, 0%, 94%);
   --color-gray-background: hsl(0, 0%, 92%);
 
@@ -97,6 +98,44 @@
   @apply border-gray-border fixed z-20 flex h-full w-64 flex-col border-e bg-white transition lg:relative;
 }
 
+.sidebar-link {
+  @apply mb-2 flex items-center rounded-lg px-4 py-3;
+}
+
+.sidebar-link:not(.active) {
+  @apply text-gray-primary hover:bg-gray-background;
+}
+
+.sidebar-link.active {
+  @apply bg-orange-secondary text-orange-primary;
+}
+
+.btn-base {
+  @apply bg-orange-primary block rounded-lg py-2 text-center text-white;
+}
+
+.tabs {
+  @apply mb-6 flex space-x-6 border-gray-border border-b text-sm font-medium;
+}
+
+.tabs .tabs-link {
+  @apply hover:text-orange-primary text-gray-primary pb-2;
+}
+
+.tabs .tabs-link.active {
+  @apply border-orange-primary text-orange-primary border-b-2;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+}
+
 .scrollbar {
   @apply [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:bg-gray-400 [&::-webkit-scrollbar-track]:bg-transparent;
 }
@@ -113,16 +152,6 @@
 
 .p-table {
   @apply px-6 py-3;
-}
-
-@media (max-width: 1024px) {
-  .sidebar {
-    transform: translateX(-100%);
-  }
-
-  .sidebar.active {
-    transform: translateX(0);
-  }
 }
 
 .chart-line {
