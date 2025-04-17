@@ -115,7 +115,7 @@
 }
 
 .tabs {
-  @apply mb-6 flex space-x-6 border-gray-border border-b text-sm font-medium;
+  @apply border-gray-border mb-6 flex space-x-6 border-b text-sm font-medium;
 }
 
 .tabs .tabs-link {
@@ -124,6 +124,10 @@
 
 .tabs .tabs-link.active {
   @apply border-orange-primary text-orange-primary border-b-2;
+}
+
+.filter .select-filter {
+  @apply focus:border-orange-primary block cursor-pointer rounded-xl px-3 py-2 transition focus:outline-none;
 }
 
 @media (max-width: 1024px) {
@@ -152,6 +156,14 @@
 
 .p-table {
   @apply px-6 py-3;
+}
+
+.d-level {
+  @apply border-gray-border border rounded-xl px-2 py-0.5 text-sm;
+}
+
+.d-level.easy {
+  @apply text-green-primary bg-green-secondary;
 }
 
 .chart-line {
