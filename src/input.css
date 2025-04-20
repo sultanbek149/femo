@@ -54,7 +54,10 @@
 
   --color-primary: hsl(0, 0%, 13%);
 
+  --color-white-secondary: hsla(0 0% 93.7% / 0.4);
+
   --color-blue-primary: hsl(206 73.8% 58%);
+  --color-blue-secondary: hsl(208 76.5% 96.7%);
 
   --color-orange-primary: hsl(30 90.7% 53.7%);
   --color-orange-secondary: hsl(30, 93%, 95%);
@@ -114,6 +117,14 @@
   @apply bg-orange-primary block rounded-lg py-2 text-center text-white;
 }
 
+.btn-orange {
+  @apply border-orange-primary bg-orange-primary flex cursor-pointer items-center gap-1 rounded-lg border-1 px-2.5 py-1.5 text-center text-sm text-white;
+}
+
+.btn-white {
+  @apply border-orange-primary text-orange-primary flex cursor-pointer items-center gap-1 rounded-lg border-1 bg-white px-2.5 py-1.5 text-center text-sm;
+}
+
 .tabs {
   @apply border-gray-border mb-6 flex space-x-6 border-b text-sm font-medium;
 }
@@ -159,7 +170,7 @@
 }
 
 .d-level {
-  @apply border-gray-border border rounded-xl px-2 py-0.5 text-sm;
+  @apply border-gray-border rounded-xl border px-2 py-0.5 text-sm;
 }
 
 .d-level.easy {
