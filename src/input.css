@@ -137,6 +137,22 @@
   @apply border-orange-primary text-orange-primary border-b-2;
 }
 
+.count-msg {
+  @apply hidden bg-orange-secondary text-orange-primary px-2 py-0.5 rounded-md;
+}
+
+.tabs-link.active .count-msg {
+  @apply inline
+}
+
+.tabs-content {
+  @apply @apply space-y-4;
+}
+
+.tabs-content > .tabs-notification {
+  @apply border-gray-border border;
+}
+
 .filter .select-filter {
   @apply focus:border-orange-primary block cursor-pointer rounded-xl px-3 py-2 transition focus:outline-none;
 }
