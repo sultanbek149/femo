@@ -78,19 +78,20 @@
   --color-green-secondary: hsl(148 52% 95.1%);
 }
 
+/* Apply base font globally */
 * {
   font-family: var(--font-main);
   font-optical-sizing: auto;
   font-style: normal;
 }
 
-/* Global */
+/* Component Styles */
 .border-default {
-  @apply border-gray-border border;
+  @apply border-gray-border border-1;
 }
 
 .input-base {
-  @apply w-full rounded-xl px-3 py-2 transition focus:border-black focus:outline-none;
+  @apply focus:border-orange-primary w-full rounded-xl px-3 py-2 transition focus:outline-none;
 }
 
 .custom-select {
@@ -117,12 +118,32 @@
   @apply bg-orange-primary block rounded-lg py-2 text-center text-white;
 }
 
+.btn-outline {
+  @apply flex cursor-pointer items-center gap-1 rounded-lg border bg-white px-2.5 py-1.5 text-center text-sm;
+}
+
+.btn--red {
+  @apply border-red-primary text-red-primary;
+}
+
+.btn--orange {
+  @apply border-orange-primary text-orange-primary;
+}
+
 .btn-orange {
-  @apply border-orange-primary bg-orange-primary flex cursor-pointer items-center gap-1 rounded-lg border-1 px-2.5 py-1.5 text-center text-sm text-white;
+  @apply border-orange-primary bg-orange-primary flex cursor-pointer items-center gap-1 rounded-lg border px-2.5 py-1.5 text-center text-sm text-white;
 }
 
 .btn-white {
-  @apply border-orange-primary text-orange-primary flex cursor-pointer items-center gap-1 rounded-lg border-1 bg-white px-2.5 py-1.5 text-center text-sm;
+  @apply border-orange-primary text-orange-primary flex cursor-pointer items-center gap-1 rounded-lg border bg-white px-2.5 py-1.5 text-center text-sm;
+}
+
+.btn-option {
+  @apply border-gray-border text-primary cursor-pointer rounded-lg border bg-white px-4 py-2 text-sm font-medium;
+}
+
+.btn-option:has(input:checked) {
+  @apply border-orange-primary text-orange-primary bg-orange-secondary;
 }
 
 .tabs {
@@ -130,7 +151,7 @@
 }
 
 .tabs .tabs-link {
-  @apply hover:text-orange-primary text-gray-primary pb-2;
+  @apply text-gray-primary hover:text-orange-primary pb-2;
 }
 
 .tabs .tabs-link.active {
@@ -138,15 +159,15 @@
 }
 
 .count-msg {
-  @apply hidden bg-orange-secondary text-orange-primary px-2 py-0.5 rounded-md;
+  @apply bg-orange-secondary text-orange-primary hidden rounded-md px-2 py-0.5;
 }
 
 .tabs-link.active .count-msg {
-  @apply inline
+  @apply inline;
 }
 
 .tabs-content {
-  @apply @apply space-y-4;
+  @apply space-y-4;
 }
 
 .tabs-content > .tabs-notification {
@@ -155,6 +176,54 @@
 
 .filter .select-filter {
   @apply focus:border-orange-primary block cursor-pointer rounded-xl px-3 py-2 transition focus:outline-none;
+}
+
+.card {
+  @apply border-gray-border rounded-2xl border px-2 py-1 text-sm flex items-center gap-1 w-fit;
+}
+
+/* Сложность */
+.card.easy {
+  @apply text-green-primary bg-green-secondary;
+}
+
+.card.middle {
+  @apply text-orange-primary bg-orange-secondary;
+}
+
+.card.hard {
+  @apply text-red-primary bg-red-secondary;
+}
+
+/* Статус */
+.card.active {
+  @apply text-green-primary bg-green-secondary;
+}
+
+.card.draft {
+  @apply text-violet-primary bg-violet-secondary;
+}
+
+.card.archive {
+  @apply text-gray-primary;
+}
+
+.card.waiting {
+  @apply text-blue-primary bg-blue-secondary;
+}
+
+.card.ongoing {
+  @apply text-orange-primary bg-orange-secondary;
+}
+
+.card.finished {
+  @apply text-green-primary bg-green-secondary;
+}
+
+
+/* banner */
+.banner {
+  @apply 
 }
 
 @media (max-width: 1024px) {
@@ -171,18 +240,21 @@
   @apply [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:bg-gray-400 [&::-webkit-scrollbar-track]:bg-transparent;
 }
 
-/* Table */
-
-.table-rate .table-tr {
-  @apply text-primary border-b border-gray-200 text-left text-[.765rem] font-bold tracking-wider uppercase;
+/* Table Styles */
+.table-tr {
+  @apply text-primary py-6 text-left text-[.765rem] font-bold tracking-wider uppercase;
 }
 
 .table-rate tbody td:first-child {
   @apply text-center;
 }
 
-.p-table {
+:is(.table-tasks, .table-olympiads) tbody td {
   @apply px-6 py-3;
+}
+
+.p-table {
+  @apply px-6 py-3 text-start;
 }
 
 .d-level {
@@ -190,9 +262,10 @@
 }
 
 .d-level.easy {
-  @apply text-green-primary bg-green-secondary;
+  @apply bg-green-secondary text-green-primary;
 }
 
+/* Chart Styles */
 .chart-line {
   fill: none;
   stroke: #111827;
