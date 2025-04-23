@@ -301,6 +301,17 @@
   @apply font-bold text-orange-primary text-sm;
 }
 
+.chat .me {
+  @apply self-end;
+}
+
+.time-msg {
+  @apply text-sm font-bold text-white bg-black text-center w-fit mx-auto px-2 py-0.5 rounded-xl;
+}
+
+.chatarea {
+  @apply px-3 py-4 w-full focus:outline-none resize-none max-h-28;
+}
 
 .d-level {
   @apply border-gray-border rounded-xl border px-2 py-0.5 text-sm;

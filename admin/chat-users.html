@@ -166,31 +166,98 @@
                             </div>
                         </div>
 
-                        <!-- Menu Items -->
-                        <div class="flex-1">
-                            <div class="px-2 space-y-1">
-                                <a href="#"
-                                    class="w-full text-left p-3 hover:bg-gray-50 rounded-lg flex items-center justify-between">
-                                    <div>
-                                        <p class="text-sm font-bold">Представители стран</p>
-                                        <p class="text-xs mt-1">Прикрепите файл, пожалуйста</p>
-                                    </div>
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
-                                        <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </a>
-                                <a href="#"
-                                    class="w-full text-left p-3 hover:bg-gray-50 rounded-lg flex items-center justify-between">
-                                    <div>
-                                        <p class="text-sm font-bold">Объявления</p>
-                                        <p class="text-xs mt-1">Прикрепите файл, пожалуйста</p>
-                                    </div>
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
-                                        <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
 
+                        <div class="px-4 py-2">
+                            <button
+                                class="text-blue-500 hover:text-blue-primar text-sm flex items-center gap-1 cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                    class="size-5">
+                                    <path fill-rule="evenodd"
+                                        d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+
+                                Назад
+                            </button>
+                        </div>
+
+                        <!-- User List -->
+                        <div class="flex-1 overflow-y-auto">
+                            <div class="space-y-1 p-2">
+                                <!-- User 1 -->
+                                <a href="#" class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-lg">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&auto=format&fit=crop&q=60"
+                                        alt="Avatar" class="w-10 h-10 rounded-full" />
+                                    <div>
+                                        <div class="flex items-center gap-1">
+                                            <span class="text-sm font-medium">Айжан Ахметова</span>
+                                            <span class="text-xs">(🇰🇿)</span>
+                                        </div>
+                                        <p class="text-xs text-gray-500">Прикрепите файл, пожалуйста</p>
+                                    </div>
+                                    <span class="ml-auto text-orange-primary text-xl font-bold me-1">•</span>
+                                </a>
+
+                                <!-- User 2 -->
+                                <a href="#" class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-lg">
+                                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=40&h=40&auto=format&fit=crop&q=60"
+                                        alt="Avatar" class="w-10 h-10 rounded-full" />
+                                    <div>
+                                        <div class="flex items-center gap-1">
+                                            <span class="text-sm font-medium">Нурсултан Абдрахимов</span>
+                                            <span class="text-xs">(🇰🇿)</span>
+                                        </div>
+                                        <p class="text-xs text-gray-500">Прикрепите файл, пожалуйста</p>
+                                    </div>
+                                    <span class="ml-auto text-green-500"><svg xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20" fill="currentColor" class="size-4">
+                                            <path fill-rule="evenodd"
+                                                d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </span>
+                                </a>
+
+                                <!-- User 3 -->
+                                <a href="#" class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-lg">
+                                    <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=40&h=40&auto=format&fit=crop&q=60"
+                                        alt="Avatar" class="w-10 h-10 rounded-full" />
+                                    <div>
+                                        <div class="flex items-center gap-1">
+                                            <span class="text-sm font-medium">Алина Токтарова</span>
+                                            <span class="text-xs">(🇰🇿)</span>
+                                        </div>
+                                        <p class="text-xs text-gray-500">Прикрепите файл, пожалуйста</p>
+                                    </div>
+                                    <span class="ml-auto text-green-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                            class="size-4">
+                                            <path fill-rule="evenodd"
+                                                d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </span>
+                                </a>
+
+                                <!-- User 4 -->
+                                <a href="#" class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-lg">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&auto=format&fit=crop&q=60"
+                                        alt="Avatar" class="w-10 h-10 rounded-full" />
+                                    <div>
+                                        <div class="flex items-center gap-1">
+                                            <span class="text-sm font-medium">Тимур Исатаев</span>
+                                            <span class="text-xs">(🇰🇿)</span>
+                                        </div>
+                                        <p class="text-xs text-gray-500">Прикрепите файл, пожалуйста</p>
+                                    </div>
+                                    <span class="ml-auto text-green-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                            class="size-4">
+                                            <path fill-rule="evenodd"
+                                                d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </span>
                                 </a>
                             </div>
                         </div>
@@ -302,7 +369,7 @@
                         </div>
 
                         <!-- Message Input -->
-                        <div class="px-4 border border-gray-200 mx-3 mb-3 rounded-xl">
+                        <div class="px-4 border border-gray-200 mx-3 mb-3     rounded-xl">
                             <div class="flex items-center gap-2 bg-white rounded-lg">
                                 <button class="p-2 text-gray-400 hover:text-gray-600 cursor-pointer">
                                     <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none">
@@ -310,8 +377,7 @@
                                             stroke-linecap="round" />
                                     </svg>
                                 </button>
-                                <textarea oninput="auto_grow(this)" rows="1" placeholder="Введите ваше сообщение..."
-                                    class="chatarea"></textarea>
+                                <textarea placeholder="Введите ваше сообщение..." class="chatarea" rows="1"></textarea>
                                 <button class="p-2 text-orange-500 hover:text-orange-600 cursor-pointer">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -354,11 +420,6 @@
             }
         });
 
-
-        function auto_grow(element) {
-            element.style.height = "5px";
-            element.style.height = (element.scrollHeight) + "px";
-        }
     </script>
 </body>
 
