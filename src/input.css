@@ -220,11 +220,35 @@
   @apply text-green-primary bg-green-secondary;
 }
 
+/* category */
+.card.participant {
+  @apply text-blue-primary bg-blue-secondary;
+}
+
+.card.winner {
+  @apply text-orange-primary bg-orange-secondary;
+}
+
+/* payment */
+.card.paid {
+  @apply text-green-primary bg-green-secondary;
+}
+
+.card.error {
+@apply text-red-primary bg-red-secondary;
+}
+
+.card.onprocess {
+@apply text-violet-primary bg-violet-secondary;
+}
+
+
+
 
 /* banner */
-.banner {
+/* .banner {
   @apply 
-}
+} */
 
 @media (max-width: 1024px) {
   .sidebar {
@@ -245,17 +269,38 @@
   @apply text-primary py-6 text-left text-[.765rem] font-bold tracking-wider uppercase;
 }
 
-.table-rate tbody td:first-child {
+:is(.table-rate) tbody td:first-child {
   @apply text-center;
 }
 
-:is(.table-tasks, .table-olympiads) tbody td {
+.table-certificates tbody td:nth-child(2) {
+  @apply text-center;
+}
+
+:is(.table-tasks, .table-olympiads, .table-overall, .table-certificates) tbody td {
   @apply px-6 py-3;
 }
 
 .p-table {
   @apply px-6 py-3 text-start;
 }
+
+:is(.table-overall, .table-payments) thead th.p-table {
+  @apply px-4 py-5 text-sm;
+}
+
+:is(.table-overall, .table-payments) tbody td {
+  @apply px-4 py-3;
+}
+
+.table-overall tbody td:first-child {
+  @apply text-center;
+}
+
+:is(.table-overall, .table-payments) tbody td:last-child {
+  @apply font-bold text-orange-primary text-sm;
+}
+
 
 .d-level {
   @apply border-gray-border rounded-xl border px-2 py-0.5 text-sm;
