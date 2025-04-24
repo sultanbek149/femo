@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/dist/style.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://unpkg.com/@lucide/web@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
   <body>
@@ -337,47 +338,12 @@
           <div class="mb-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
             <div class="space-y-5">
               <!-- Activity Chart -->
-              <div class="border-default rounded-xl bg-white p-6">
+              <div class="border-default rounded-xl bg-green-secondary p-6">
                 <div class="mb-6 flex items-center justify-between">
-                  <h3 class="text-lg font-bold">Активность</h3>
-                  <div class="flex space-x-2">
-                    <button
-                      onclick="switchPeriod('year')"
-                      class="period-tab cursor-pointer rounded-lg px-4 py-2 text-sm text-gray-600 hover:bg-gray-50"
-                    >
-                      Год
-                    </button>
-                    <button
-                      onclick="switchPeriod('month')"
-                      class="period-tab cursor-pointer rounded-lg px-4 py-2 text-sm text-gray-600 hover:bg-gray-50"
-                    >
-                      Месяц
-                    </button>
-                    <button
-                      onclick="switchPeriod('week')"
-                      class="period-tab cursor-pointer rounded-lg bg-gray-900 px-4 py-2 text-sm text-white"
-                    >
-                      Неделя
-                    </button>
-                  </div>
+                  <h3 class="text-lg font-bold">Динамика участников по годам</h3>
                 </div>
-                <div class="relative h-64">
-                  <svg id="activity-chart" class="h-full w-full"></svg>
-                  <div
-                    class="absolute top-0 left-0 flex h-full w-8 flex-col justify-between text-sm text-gray-600"
-                  >
-                    <span>15</span>
-                    <span>10</span>
-                    <span>5</span>
-                    <span>0</span>
-                  </div>
-                </div>
-                <div class="mt-4 flex justify-between text-sm text-gray-600">
-                  <span>08.03.25</span>
-                  <span>08.03.25</span>
-                  <span>08.03.25</span>
-                  <span>08.03.25</span>
-                  <span>14.03.25</span>
+                <div class="chart-container relative h-86">
+                  <canvas id="participantsChart"></canvas>
                 </div>
               </div>
 
@@ -1456,111 +1422,80 @@
       }
 
       // Chart data for different periods
-      const chartData = {
-        week: [
-          { date: '08.03.25', value: 1 },
-          { date: '09.03.25', value: 4 },
-          { date: '10.03.25', value: 2 },
-          { date: '11.03.25', value: 8 },
-          { date: '12.03.25', value: 1 },
-          { date: '13.03.25', value: 6 },
-          { date: '14.03.25', value: 12 },
-        ],
-        month: [
-          { date: '01.03.25', value: 3 },
-          { date: '08.03.25', value: 5 },
-          { date: '15.03.25', value: 7 },
-          { date: '22.03.25', value: 4 },
-          { date: '29.03.25', value: 9 },
-        ],
-        year: [
-          { date: 'Янв', value: 20 },
-          { date: 'Фев', value: 35 },
-          { date: 'Мар', value: 28 },
-          { date: 'Апр', value: 45 },
-          { date: 'Май', value: 30 },
-          { date: 'Июн', value: 50 },
-        ],
-      }
-
-      function drawChart(data) {
-        const svg = document.getElementById('activity-chart')
-        const width = svg.clientWidth
-        const height = svg.clientHeight
-        const padding = 40
-
-        // Clear previous chart
-        svg.innerHTML = ''
-
-        // Calculate scales
-        const maxValue = Math.max(...data.map((d) => d.value))
-        const xScale = (width - padding * 2) / (data.length - 1)
-        const yScale = (height - padding * 2) / maxValue
-
-        // Draw grid lines
-        for (let i = 0; i <= 4; i++) {
-          const y = padding + (height - padding * 2) * (i / 4)
-          const line = document.createElementNS(
-            'http://www.w3.org/2000/svg',
-            'line'
-          )
-          line.setAttribute('x1', padding)
-          line.setAttribute('y1', y)
-          line.setAttribute('x2', width - padding)
-          line.setAttribute('y2', y)
-          line.setAttribute('class', 'chart-grid')
-          svg.appendChild(line)
-        }
-
-        // Create the line path
-        let pathD = ''
-        data.forEach((point, i) => {
-          const x = padding + i * xScale
-          const y = height - (padding + point.value * yScale)
-          pathD += `${i === 0 ? 'M' : 'L'} ${x},${y}`
-        })
-
-        // Add the line
-        const path = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'path'
-        )
-        path.setAttribute('d', pathD)
-        path.setAttribute('class', 'chart-line')
-        svg.appendChild(path)
-
-        // Add dots
-        data.forEach((point, i) => {
-          const x = padding + i * xScale
-          const y = height - (padding + point.value * yScale)
-
-          const dot = document.createElementNS(
-            'http://www.w3.org/2000/svg',
-            'circle'
-          )
-          dot.setAttribute('cx', x)
-          dot.setAttribute('cy', y)
-          dot.setAttribute('r', 4)
-          dot.setAttribute('class', 'chart-dot')
-          svg.appendChild(dot)
-        })
-      }
-
-      function switchPeriod(period) {
-        // Update tab styles
-        document.querySelectorAll('.period-tab').forEach((tab) => {
-          tab.className =
-            'period-tab px-4 py-2 rounded-lg text-sm text-gray-600 hover:bg-gray-50'
-        })
-        event.target.className =
-          'period-tab px-4 py-2 rounded-lg text-sm bg-gray-900 text-white'
-
-        // Draw new chart
-        drawChart(chartData[period])
-      }
-
-      // Initial chart
-      drawChart(chartData.week)
+      document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('participantsChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+                    datasets: [{
+                        data: [15, 80, 60, 40, 20, 10, 0], // Fixed to 7 values to match years
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.08)',
+                        borderWidth: 1,
+                        pointRadius: 3,
+                        pointHoverRadius: 10,
+                        pointBackgroundColor: '#fff',
+                        tension: 0.6,
+                        fill: true,
+                        borderCapStyle: 'round',
+                        borderJoinStyle: 'round',
+                        pointStyle: 'circle'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            suggestedMax: 100, // Force maximum value
+                            ticks: {
+                                callback: function(value) {
+                                    return value === 0 ? 0 : value + ' участников';
+                                }
+                            },
+                            // title: {
+                            //     display: true,
+                            //     text: 'Количество'
+                            // }
+                            stepSize: 20, // Force ticks every 20 units
+                            precision: 0,
+                            autoSkip: false
+                        },
+                        
+                        x: {
+                          grid: {
+                                display: false // Remove vertical grid lines
+                            },
+                          ticks: {
+                              autoSkip: false
+                          }
+                            // title: {
+                            //     display: true,
+                            //     text: 'Год'
+                            // }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                          display: false
+                        },   
+                        // legend: {
+                        //     position: 'top',
+                        //     labels: {
+                        //         usePointStyle: true
+                        //     }
+                        // },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
+                    }
+                }
+            });
+        });
     </script>
   </body>
 </html>
