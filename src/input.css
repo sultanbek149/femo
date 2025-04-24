@@ -179,7 +179,7 @@
 }
 
 .card {
-  @apply border-gray-border rounded-2xl border px-2 py-1 text-sm flex items-center gap-1 w-fit;
+  @apply border-gray-border flex w-fit items-center gap-1 rounded-2xl border px-2 py-1 text-sm;
 }
 
 /* Сложность */
@@ -235,15 +235,12 @@
 }
 
 .card.error {
-@apply text-red-primary bg-red-secondary;
+  @apply text-red-primary bg-red-secondary;
 }
 
 .card.onprocess {
-@apply text-violet-primary bg-violet-secondary;
+  @apply text-violet-primary bg-violet-secondary;
 }
-
-
-
 
 /* banner */
 /* .banner {
@@ -277,7 +274,9 @@
   @apply text-center;
 }
 
-:is(.table-tasks, .table-olympiads, .table-overall, .table-certificates) tbody td {
+:is(.table-tasks, .table-olympiads, .table-overall, .table-certificates)
+  tbody
+  td {
   @apply px-6 py-3;
 }
 
@@ -298,7 +297,7 @@
 }
 
 :is(.table-overall, .table-payments) tbody td:last-child {
-  @apply font-bold text-orange-primary text-sm;
+  @apply text-orange-primary text-sm font-bold;
 }
 
 .chat .me {
@@ -306,11 +305,11 @@
 }
 
 .time-msg {
-  @apply text-sm font-bold text-white bg-black text-center w-fit mx-auto px-2 py-0.5 rounded-xl;
+  @apply mx-auto w-fit rounded-xl bg-black px-2 py-0.5 text-center text-sm font-bold text-white;
 }
 
 .chatarea {
-  @apply px-3 py-4 w-full focus:outline-none resize-none max-h-28;
+  @apply max-h-28 w-full resize-none px-3 py-4 focus:outline-none;
 }
 
 .d-level {
