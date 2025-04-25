@@ -349,6 +349,14 @@
                     </div>
 
                     <div class="tabs-content scrollbar max-h-[70vh] overflow-y-scroll pe-2">
+                      <div class="tabs-notification" data-tab="users">...</div>
+
+                      <!-- Notification 2 (Olympiad-related) -->
+                      <div class="tabs-notification" data-tab="olympiads">...</div>
+
+                      <!-- Notification 3 (Result-related) -->
+                      <div class="tabs-notification" data-tab="results">...</div>
+
                       <!-- Notification 1 -->
                       <div class="tabs-notification flex items-start gap-4 rounded-2xl bg-white p-4">
                         <span class="text-blue-primary bg-blue-secondary rounded-full p-2">
@@ -995,6 +1003,35 @@
         },
       })
     })
+
+
+    // Tabs functionality
+    document.addEventListener('DOMContentLoaded', function () {
+      const tabs = document.querySelectorAll('.tabs-link');
+      const notifications = document.querySelectorAll('.tabs-notification');
+
+      // Add click event listeners to tabs
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+          const tabType = this.dataset.tab;
+
+          // Remove active class from all tabs
+          tabs.forEach(t => t.classList.remove('active'));
+
+          // Add active class to clicked tab
+          this.classList.add('active');
+
+          // Filter notifications
+          notifications.forEach(notification => {
+            if (tabType === 'all' || notification.dataset.tab === tabType) {
+              notification.style.display = 'flex';
+            } else {
+              notification.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
   </script>
 </body>
 
