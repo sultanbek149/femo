@@ -45,6 +45,10 @@
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(2 / 1.5);
+    --text-5xl: 3rem;
+    --text-5xl--line-height: 1;
+    --text-6xl: 3.75rem;
+    --text-6xl--line-height: 1;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
@@ -432,6 +436,9 @@
   .h-2 {
     height: calc(var(--spacing) * 2);
   }
+  .h-3 {
+    height: calc(var(--spacing) * 3);
+  }
   .h-4 {
     height: calc(var(--spacing) * 4);
   }
@@ -449,6 +456,9 @@
   }
   .h-12 {
     height: calc(var(--spacing) * 12);
+  }
+  .h-36 {
+    height: calc(var(--spacing) * 36);
   }
   .h-64 {
     height: calc(var(--spacing) * 64);
@@ -498,11 +508,17 @@
   .w-12 {
     width: calc(var(--spacing) * 12);
   }
+  .w-44 {
+    width: calc(var(--spacing) * 44);
+  }
   .w-64 {
     width: calc(var(--spacing) * 64);
   }
   .w-72 {
     width: calc(var(--spacing) * 72);
+  }
+  .w-\[76\%\] {
+    width: 76%;
   }
   .w-fit {
     width: fit-content;
@@ -938,6 +954,14 @@
   .text-2xl {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
+  .text-5xl {
+    font-size: var(--text-5xl);
+    line-height: var(--tw-leading, var(--text-5xl--line-height));
+  }
+  .text-6xl {
+    font-size: var(--text-6xl);
+    line-height: var(--tw-leading, var(--text-6xl--line-height));
   }
   .text-base {
     font-size: var(--text-base);
@@ -1607,6 +1631,26 @@
 .card.onprocess {
   background-color: var(--color-violet-secondary);
   color: var(--color-violet-primary);
+}
+.grid-cards {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-areas: "a b b c";
+}
+.grid-cards > * {
+  height: 183px;
+}
+.grid-item-a {
+  grid-area: a;
+}
+.grid-item-b {
+  grid-area: b;
+}
+.grid-item-c {
+  grid-area: c;
+}
+.tbody-rate tr > td:first-child {
+  text-align: center;
 }
 @media (max-width: 1024px) {
   .sidebar {

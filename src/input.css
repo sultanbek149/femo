@@ -242,6 +242,32 @@
   @apply text-violet-primary bg-violet-secondary;
 }
 
+.grid-cards {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-areas: "a b b c";
+}
+
+.grid-cards > * {
+  height: 183px;
+}
+
+.grid-item-a {
+  grid-area: a;
+}
+
+.grid-item-b {
+  grid-area: b;
+}
+
+.grid-item-c {
+  grid-area: c;
+}
+
+.tbody-rate tr > td:first-child {
+  text-align: center;
+}
+
 /* banner */
 /* .banner {
   @apply 
