@@ -52,6 +52,8 @@
 @theme {
   --font-main: 'Proxima Nova', sans-serif;
 
+  --text-xss: 10px;
+
   --color-primary: hsl(0, 0%, 13%);
 
   --color-white-secondary: hsla(0 0% 93.7% / 0.4);
@@ -61,7 +63,7 @@
 
   --color-orange-primary: hsl(30 90.7% 53.7%);
   --color-orange-secondary: hsl(30, 93%, 95%);
-  --color-orange-third: hsl(30 90.7% 53.7%);
+  --color-orange-third: hsl(32, 89%, 96%);
 
   --color-gray-primary: hsl(0, 0%, 38%);
   --color-gray-secondary: hsl(0 0% 44.7%);
@@ -195,6 +197,10 @@
   @apply text-red-primary bg-red-secondary;
 }
 
+.tasks .card {
+  @apply max-sm:hidden;
+}
+
 /* Статус */
 .card.active {
   @apply text-green-primary bg-green-secondary;
@@ -234,6 +240,10 @@
   @apply text-green-primary bg-green-secondary;
 }
 
+.card.unpaid {
+  @apply text-gray-primary rounded-full py-0.5;
+}
+
 .card.error {
   @apply text-red-primary bg-red-secondary;
 }
@@ -245,7 +255,7 @@
 .grid-cards {
   display: grid;
   gap: 1.5rem;
-  grid-template-areas: "a b b c";
+  grid-template-areas: 'a b b c';
 }
 
 .grid-cards > * {
@@ -266,6 +276,14 @@
 
 .tbody-rate tr > td:first-child {
   text-align: center;
+}
+
+.switch-btn {
+  @apply border-gray-border cursor-pointer rounded-xl border-1 px-3 py-1.5;
+}
+
+.switch-btn.active {
+  @apply border-orange-primary text-orange-primary bg-orange-secondary;
 }
 
 /* banner */
@@ -360,4 +378,12 @@
 .chart-grid {
   stroke: #e5e7eb;
   stroke-width: 1;
+}
+
+.grayed {
+  @apply opacity-25;
+}
+
+.grayed div > p {
+  color: #616161;
 }

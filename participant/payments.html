@@ -142,151 +142,217 @@
       </header>
 
       <!-- Dashboard Content -->
-      <main class="flex-1 overflow-y-auto p-6">
-        <!-- Header -->
-        <div class="mb-6 flex items-center justify-between">
-          <h1 class="text-2xl font-semibold">Сертификаты</h1>
+      <main class="flex-1 space-y-6 overflow-y-auto p-6">
+        <div>
+          <!-- Tabs -->
+          <div class="tabs w-fit">
+            <a href="/participant/my-way.html" class="tabs-link">Мой путь</a>
+            <a href="/participant/personal.html" class="tabs-link">Личные данные</a>
+            <a href="/participant/payments.html" class="tabs-link active">Баланс и платежи</a>
+            <a href="/participant/settings.html" class="tabs-link">Настройки</a>
+          </div>
         </div>
 
-        <div class="border-default mb-6 overflow-x-auto rounded-2xl border">
-          <table class="table-olympiads w-full rounded-2xl pb-6">
-            <thead>
-              <tr class="border-b border-gray-200">
-                <th class="p-table">
-                  <div class="flex items-center">Название олимпиады</div>
-                </th>
-                <th class="p-table">
-                  <div class="flex items-center gap-1">
-                    Дата получения
-                    <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
-                        <path fill-rule="evenodd"
-                          d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z"
-                          clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                  </div>
-                </th>
-                <th class="p-table">Категория</th>
-                <th class="p-table">
-                  <div class="flex items-center gap-1">
-                    Место
-                    <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
-                        <path fill-rule="evenodd"
-                          d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z"
-                          clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                  </div>
-                </th>
-                <th class="p-table">Сертификат</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200">
-              <tr class="hover:bg-gray-50">
-                <td>FEMO Зима 2025</td>
-                <td>15 декабря 2025</td>
-                <td>
-                  <span class="card easy">Победитель</span>
-                </td>
-                <td>8-е</td>
-                <td>
-                  <div class="text-orange-primary flex cursor-pointer items-center gap-2">
-                    <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-5">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                      </svg>
-                    </span>
-                    Скачать
-                  </div>
-                </td>
-              </tr>
+        <div class="space-y-6">
+          <div class="bg-orange-secondary relative w-full max-w-xl overflow-hidden rounded-2xl p-5">
+            <p class="text-sm">Мой баланс</p>
+            <p class="balance text-orange-primary mb-6 text-4xl font-bold">
+              5699 ₸
+            </p>
 
-              <tr class="hover:bg-gray-50">
-                <td>FEMO Зима 2025</td>
-                <td>15 декабря 2025</td>
-
-                <td>
-                  <span class="card middle">Участник</span>
-                </td>
-                <td>👑 2-е</td>
-                <td>
-                  <div class="text-orange-primary flex cursor-pointer items-center gap-2">
-                    <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-5">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                      </svg>
-                    </span>
-                    Скачать
-                  </div>
-                </td>
-              </tr>
-
-              <tr class="hover:bg-gray-50">
-                <td>FEMO Зима 2025</td>
-                <td>15 декабря 2025</td>
-
-                <td>
-                  <span class="card middle">Участник</span>
-                </td>
-                <td>👑 1-е</td>
-                <td>
-                  <div class="text-orange-primary flex cursor-pointer items-center gap-2">
-                    <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-5">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                      </svg>
-                    </span>
-                    Скачать
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Pagination -->
-        <div class="flex items-center justify-between">
-          <div class="text-sm text-gray-700">Всего 85 участников</div>
-          <div class="flex items-center gap-0.5 *:cursor-pointer">
-            <button class="cursor-pointer px-3 py-1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
-                <path fill-rule="evenodd"
-                  d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
-                  clip-rule="evenodd" />
-              </svg>
+            <button class="text-orange-primary border-orange-primary cursor-pointer rounded-xl border-1 px-4 py-2">
+              Пополнить баланс
             </button>
-            <div class="flex gap-1 *:cursor-pointer">
-              <button class="border-orange-primary text-orange-primary rounded border-1 px-3 py-1">
-                1
-              </button>
-              <button class="px-3 py-1 text-gray-600 hover:bg-gray-50">
-                2
-              </button>
-              <button class="px-3 py-1 text-gray-600 hover:bg-gray-50">
-                3
-              </button>
-              <button class="px-3 py-1 text-gray-600 hover:bg-gray-50">
-                4
-              </button>
-              <button class="px-3 py-1 text-gray-600 hover:bg-gray-50">
-                5
+
+            <img src="/src/assets/images/balance_treasure.png" alt="trea"
+              class="absolute top-4 right-4 object-contain" />
+          </div>
+
+          <div>
+            <p class="mb-4 text-lg font-bold">Активные олимпиады</p>
+
+            <div class="border-default w-full max-w-sm rounded-2xl p-4">
+              <div class="card unpaid mb-2">Не оплачено</div>
+
+              <p class="mb-4 font-bold">FEMO Весенний тур 2024</p>
+
+              <div class="mb-6 flex *:flex-1">
+                <div>
+                  <p class="text-gray-primary text-xs">Цена</p>
+                  <div class="text-blue-primary spacey-y-2 flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                      stroke="currentColor" class="size-5">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
+                    </svg>
+
+                    <span class="mt-[0.0825rem] text-sm">5000 ₸</span>
+                  </div>
+                </div>
+                <div>
+                  <p class="text-gray-primary text-xs">Осталось</p>
+                  <div class="text-red-primary spacey-y-2 flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                      stroke="currentColor" class="size-5">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+
+                    <span class="mt-[0.0625rem] text-sm">1 ч : 36 м : 23 c
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <button class="bg-orange-primary block w-full rounded-3xl p-1.5 text-center text-white">
+                Оплатить участие
               </button>
             </div>
-            <button class="cursor-pointer px-3 py-1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
-                <path fill-rule="evenodd"
-                  d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                  clip-rule="evenodd" />
-              </svg>
-            </button>
+          </div>
+
+          <div class="table-group">
+            <p class="mb-4 text-xl font-bold">История платежей</p>
+
+            <div class="border-default mb-6 overflow-x-auto rounded-2xl border">
+              <table class="table-olympiads w-full rounded-2xl pb-6">
+                <thead>
+                  <tr class="border-b border-gray-200">
+                    <th class="p-table">ID платежа</th>
+                    <th class="p-table flex items-center gap-1">
+                      Дата получения
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                          <path fill-rule="evenodd"
+                            d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z"
+                            clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                    </th>
+                    <th class="p-table">Описание</th>
+                    <th class="p-table">Сумма</th>
+                    <th class="p-table">Статус</th>
+                    <th class="p-table">Действия</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  <tr class="hover:bg-gray-50">
+                    <td>FEMO-PAY-21433</td>
+                    <td>15 декабря 2023</td>
+                    <td>Пополнить баланс</td>
+                    <td>+4 000 ₸</td>
+                    <td>
+                      <div class="card onprocess">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                          stroke="currentColor" class="size-5">
+                          <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        В процессе
+                      </div>
+                    </td>
+                    <td>
+                      <div class="text-orange-primary flex cursor-pointer items-center gap-1">
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                          </svg>
+                        </span>
+                        Скачать
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr class="hover:bg-gray-50">
+                    <td>FEMO-PAY-21433</td>
+                    <td>15 декабря 2023</td>
+                    <td>Пополнить баланс</td>
+                    <td>-1 000 ₸</td>
+                    <td>
+                      <span class="card paid">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                          stroke="currentColor" class="size-5">
+                          <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        Оплачено
+                      </span>
+                    </td>
+                    <td>
+                      <div class="text-orange-primary flex cursor-pointer items-center gap-2">
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                          </svg>
+                        </span>
+                        Скачать
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr class="hover:bg-gray-50">
+                    <td>FEMO-PAY-21433</td>
+                    <td>15 декабря 2023</td>
+                    <td>Пополнить баланс</td>
+                    <td>+4 000 ₸</td>
+                    <td>
+                      <span class="card error">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                          stroke="currentColor" class="size-5">
+                          <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        Ошибка
+                      </span>
+                    </td>
+                    <td>
+                      <div class="text-orange-primary flex cursor-pointer items-center gap-2">
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                          </svg>
+                        </span>
+                        Скачать
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr class="hover:bg-gray-50">
+                    <td>FEMO-PAY-21433</td>
+                    <td>15 декабря 2023</td>
+                    <td>Пополнить баланс</td>
+                    <td>-2 000 ₸</td>
+                    <td>
+                      <div class="card paid">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                          stroke="currentColor" class="size-5">
+                          <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        Оплачено
+                      </div>
+                    </td>
+                    <td>
+                      <div class="text-orange-primary flex cursor-pointer items-center gap-2">
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                          </svg>
+                        </span>
+                        Скачать
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </main>
@@ -308,6 +374,25 @@
       const overlay = document.getElementById('overlayModal')
       overlay.classList.toggle('hidden')
       modal.classList.toggle('hidden')
+    }
+
+    // Image Uploader
+    function previewImage(event) {
+      const input = event.target
+      const preview = document.getElementById('imagePreview')
+      const fileName = document.getElementById('fileName')
+
+      if (input.files && input.files[0]) {
+        const reader = new FileReader()
+
+        reader.onload = function (e) {
+          preview.src = e.target.result
+          preview.classList.remove('bg-gray-50')
+          fileName.textContent = input.files[0].name
+        }
+
+        reader.readAsDataURL(input.files[0])
+      }
     }
 
     // Chart data for different periods

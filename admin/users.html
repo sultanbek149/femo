@@ -82,18 +82,17 @@
           </svg>
           Платежи
         </a>
-      </nav>
-
-      <div class="p-4">
         <a href="/admin/chat.html" class="sidebar-link">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="mr-3 size-6">
             <path stroke-linecap="round" stroke-linejoin="round"
               d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
           </svg>
-
-          Чат
+          Чат с пользователями
         </a>
+      </nav>
+
+      <div class="p-4">
         <a href="#" class="sidebar-link">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="mr-3 size-6">
@@ -118,7 +117,7 @@
             <button class="mr-4 cursor-pointer text-gray-600 hover:text-gray-900 lg:hidden" onclick="toggleSidebar()">
               <i data-lucide="menu" class="h-6 w-6"></i>
             </button>
-            <h1 class="text-xl">Добро пожаловать, Айжан 👋</h1>
+            <h1 class="text-xl max-md:hidden">Добро пожаловать, Айжан 👋</h1>
           </div>
           <div class="flex items-center space-x-4">
             <button class="text-orange-primary bg-orange-secondary cursor-pointer rounded-full p-1">
@@ -203,64 +202,54 @@
                           <div>
                             <label class="mb-1 block text-sm font-medium text-gray-700">Email
                               <span class="text-red-primary">*</span></label>
-                            <input placeholder="ivan.ivanov@example.com" type="email" name="email" class="input-base border-default" required />
+                            <input placeholder="ivan.ivanov@example.com" type="email" name="email"
+                              class="input-base border-default" required />
                           </div>
                           <div>
                             <label class="mb-1 block text-sm font-medium text-gray-700">ФИО
                               <span class="text-red-primary">*</span></label>
-                            <input placeholder="Айжан Ахметова" type="text" name="fullname" class="input-base border-default" required />
+                            <input placeholder="Айжан Ахметова" type="text" name="fullname"
+                              class="input-base border-default" required />
                           </div>
                           <div>
                             <label class="mb-1 block text-sm font-medium text-gray-700">Страна
                               <span class="text-red-primary">*</span></label>
-                            <input placeholder="Казахстан" type="text" name="country" class="input-base border-default" required />
+                            <input placeholder="Казахстан" type="text" name="country" class="input-base border-default"
+                              required />
                           </div>
                           <div>
                             <label class="mb-1 block text-sm font-medium text-gray-700">Город
                               <span class="text-red-primary">*</span></label>
-                            <input placeholder="Алматы" type="text" name="city" class="input-base border-default" required />
+                            <input placeholder="Алматы" type="text" name="city" class="input-base border-default"
+                              required />
                           </div>
                           <div>
                             <label class="mb-1 block text-sm font-medium text-gray-700">Школа
                               <span class="text-red-primary">*</span></label>
-                            <input placeholder="Название школы" type="text" name="school" class="input-base border-default" required />
+                            <input placeholder="Название школы" type="text" name="school"
+                              class="input-base border-default" required />
                           </div>
                           <div>
                             <label class="mb-1 block text-sm font-medium text-gray-700">Класс
                               <span class="text-red-primary">*</span></label>
-                            <input min="1" max="11" maxlength="2" placeholder="10" type="number" name="class" class="input-base border-default" required />
+                            <input min="1" max="11" maxlength="2" placeholder="10" type="number" name="class"
+                              class="input-base border-default" required />
                           </div>
                           <div>
                             <label class="mb-1 block text-sm font-medium text-gray-700">Пароль
                               <span class="text-red-primary">*</span></label>
-                              <div class="relative">
-                                <input
-                                  id="password"
-                                  type="password"
-                                  placeholder="Введите пароль"
-                                  class="input-base border-default"
-                                />
-                                <button
-                                  type="button"
-                                  data-target="password"
-                                  class="toggle-pw text-gray-primary hover:text-primary absolute top-1/2 right-2 -translate-y-1/2 transform cursor-pointer"
-                                >
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                    stroke="currentColor"
-                                    class="size-6"
-                                  >
-                                    <path
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round"
-                                      d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88"
-                                    />
-                                  </svg>
-                                </button>
-                              </div>                      
+                            <div class="relative">
+                              <input id="password" type="password" placeholder="Введите пароль"
+                                class="input-base border-default" />
+                              <button type="button" data-target="password"
+                                class="toggle-pw text-gray-primary hover:text-primary absolute top-1/2 right-2 -translate-y-1/2 transform cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                  stroke-width="1.5" stroke="currentColor" class="size-6">
+                                  <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
+                                </svg>
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>

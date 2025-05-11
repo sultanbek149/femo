@@ -82,9 +82,6 @@
           </svg>
           Платежи
         </a>
-      </nav>
-
-      <div class="p-4">
         <a href="/admin/chat.html" class="sidebar-link">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="mr-3 size-6">
@@ -92,8 +89,11 @@
               d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
           </svg>
 
-          Чат
+          Чат с пользователями
         </a>
+      </nav>
+
+      <div class="p-4">
         <a href="#" class="sidebar-link">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="mr-3 size-6">
@@ -119,7 +119,7 @@
             <button class="mr-4 cursor-pointer text-gray-600 hover:text-gray-900 lg:hidden" onclick="toggleSidebar()">
               <i data-lucide="menu" class="h-6 w-6"></i>
             </button>
-            <h1 class="text-xl">Добро пожаловать, Айжан 👋</h1>
+            <h1 class="text-xl max-md:hidden">Добро пожаловать, Айжан 👋</h1>
           </div>
           <div class="flex items-center space-x-4">
             <button class="text-orange-primary bg-orange-secondary cursor-pointer rounded-full p-1">
@@ -349,13 +349,19 @@
                     </div>
 
                     <div class="tabs-content scrollbar max-h-[70vh] overflow-y-scroll pe-2">
-                      <div class="tabs-notification" data-tab="users">...</div>
+                      <div class="tabs-notification" data-tab="users">
+                        ...
+                      </div>
 
                       <!-- Notification 2 (Olympiad-related) -->
-                      <div class="tabs-notification" data-tab="olympiads">...</div>
+                      <div class="tabs-notification" data-tab="olympiads">
+                        ...
+                      </div>
 
                       <!-- Notification 3 (Result-related) -->
-                      <div class="tabs-notification" data-tab="results">...</div>
+                      <div class="tabs-notification" data-tab="results">
+                        ...
+                      </div>
 
                       <!-- Notification 1 -->
                       <div class="tabs-notification flex items-start gap-4 rounded-2xl bg-white p-4">
@@ -1004,34 +1010,33 @@
       })
     })
 
-
     // Tabs functionality
     document.addEventListener('DOMContentLoaded', function () {
-      const tabs = document.querySelectorAll('.tabs-link');
-      const notifications = document.querySelectorAll('.tabs-notification');
+      const tabs = document.querySelectorAll('.tabs-link')
+      const notifications = document.querySelectorAll('.tabs-notification')
 
       // Add click event listeners to tabs
-      tabs.forEach(tab => {
+      tabs.forEach((tab) => {
         tab.addEventListener('click', function () {
-          const tabType = this.dataset.tab;
+          const tabType = this.dataset.tab
 
           // Remove active class from all tabs
-          tabs.forEach(t => t.classList.remove('active'));
+          tabs.forEach((t) => t.classList.remove('active'))
 
           // Add active class to clicked tab
-          this.classList.add('active');
+          this.classList.add('active')
 
           // Filter notifications
-          notifications.forEach(notification => {
+          notifications.forEach((notification) => {
             if (tabType === 'all' || notification.dataset.tab === tabType) {
-              notification.style.display = 'flex';
+              notification.style.display = 'flex'
             } else {
-              notification.style.display = 'none';
+              notification.style.display = 'none'
             }
-          });
-        });
-      });
-    });
+          })
+        })
+      })
+    })
   </script>
 </body>
 
