@@ -132,14 +132,14 @@
   @apply border-orange-primary text-orange-primary;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* Hide spinners in Firefox */
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -152,11 +152,11 @@ input[type="number"] {
 }
 
 .btn-red-b {
- @apply border-red-primary flex cursor-pointer items-center gap-1 rounded-lg border px-2.5 py-1.5 text-center text-sm text-red-primary; 
+  @apply border-red-primary text-red-primary flex cursor-pointer items-center gap-1 rounded-lg border px-2.5 py-1.5 text-center text-sm;
 }
 
 .btn-gray-b {
-  @apply border-gray-border border-1 flex cursor-pointer items-center gap-1 rounded-lg px-2.5 py-1.5 text-center text-sm;
+  @apply border-gray-border flex cursor-pointer items-center gap-1 rounded-lg border-1 px-2.5 py-1.5 text-center text-sm;
 }
 
 .btn-white {
@@ -282,9 +282,10 @@ input[type="number"] {
 }
 
 @media screen and (max-width: 80rem) {
-.grid-cards {
-    grid-template-areas: 'a c'
-                        'b b';
+  .grid-cards {
+    grid-template-areas:
+      'a c'
+      'b b';
   }
 }
 
@@ -321,7 +322,7 @@ input[type="number"] {
 }
 
 .btn-switch {
-  @apply cursor-pointer px-4 py-2.5 border-gray-border border-1 flex items-center gap-1;
+  @apply border-gray-border flex cursor-pointer items-center gap-1 border-1 px-4 py-2.5;
 }
 
 .btn-switch.active {
@@ -407,7 +408,7 @@ input[type="number"] {
 }
 
 .chart-tab {
-  @apply border-blue-primary border-1 px-3 py-1.5 rounded-xl cursor-pointer;
+  @apply border-blue-primary cursor-pointer rounded-xl border-1 px-3 py-1.5;
 }
 
 .chart-tab.active {
@@ -415,7 +416,7 @@ input[type="number"] {
 }
 
 .tab-pane.active {
-  @apply block
+  @apply block;
 }
 
 /* Chart Styles */
