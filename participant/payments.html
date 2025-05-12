@@ -124,15 +124,16 @@
 
       <!-- Dashboard Content -->
       <main class="flex-1 space-y-6 overflow-y-auto p-6">
-        <div>
+        <div class="overflow-x-auto mb-6">
           <!-- Tabs -->
-          <div class="tabs w-fit">
+          <div class="tabs w-[26rem] !mb-1">
             <a href="/participant/my-way.html" class="tabs-link">Мой путь</a>
             <a href="/participant/personal.html" class="tabs-link">Личные данные</a>
             <a href="/participant/payments.html" class="tabs-link active">Баланс и платежи</a>
             <a href="/participant/settings.html" class="tabs-link">Настройки</a>
           </div>
         </div>
+
 
         <div class="space-y-6">
           <div class="bg-orange-secondary relative w-full max-w-xl overflow-hidden rounded-2xl p-5">
@@ -185,9 +186,76 @@
                 </div>
               </div>
 
-              <button class="bg-orange-primary block w-full rounded-3xl p-1.5 text-center text-white">
+              <button class="bg-orange-primary block w-full rounded-3xl p-1.5 text-center text-white cursor-pointer"
+                onclick="toggleModal()">
                 Оплатить участие
               </button>
+
+              <div id="overlayModal" class="overlay fixed inset-0 z-20 hidden bg-black/50 transition"></div>
+
+              <div id="modal"
+                class="modal fixed top-1/3 left-1/2 z-30 hidden w-full max-w-lg -translate-y-1/2 -translate-x-1/2 px-4 sm:px-0">
+                <div class="relative">
+                  <form class="flex flex-col rounded-3xl bg-white">
+                    <p class="border-gray-border border-b px-6 pt-6 pb-3 text-xl font-bold">
+                      Пополнить баланс
+                    </p>
+
+                    <div class="px-6 pt-3 pb-5 space-y-4">
+                      <div>
+                        <label class="mb-1 block text-sm font-medium text-gray-700">Введите сумму для пополнения</label>
+                        <div class="relative">
+                          <input type="number" placeholder="1000" min="0"
+                            class="input-base bg-transparent z-2 overflow-hidden border-default border-1 appearance-none"
+                            oninput="validateNumberInput(this)" required />
+                          <div
+                            class=" border-gray-border border-s-1 z-1 flex items-center gap-1 absolute ps-3 right-3 inset-y-[0.0625rem] cursor-pointer">
+                            ₸
+                            <span class="text-gray-primary">
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
+
+                      </div>
+
+
+                      <div>
+                        <label class="mb-1 block text-sm font-medium text-gray-700">Выберите способ оплаты</label>
+                        <div class="flex items-center">
+                          <div class="btn-switch rounded-s-2xl active">
+                            <img class="hidden sm:inline" src="/src/assets/images/visa.svg" alt="visa">
+                            Visa / MasterCard
+                          </div>
+                          <div class="btn-switch">
+                            <img class="hidden sm:inline" src="/src/assets/images/kaspi.svg" alt="kaspi">
+                            Kaspi
+                          </div>
+                          <div class="btn-switch rounded-e-2xl">
+                            <img class="hidden sm:inline" src="/src/assets/images/halyk.svg" alt="halyk">
+                            HalykPay
+                          </div>
+                        </div>
+                      </div>
+
+                      <button class="btn-orange w-full justify-center" onclick="toggleModal()">
+                        Пополнить баланс
+                      </button>
+                    </div>
+                  </form>
+
+                  <div class="absolute top-6 right-5 cursor-pointer" onclick="toggleModal()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+                      <path fill-rule="evenodd"
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+                        clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -355,6 +423,41 @@
       const overlay = document.getElementById('overlayModal')
       overlay.classList.toggle('hidden')
       modal.classList.toggle('hidden')
+    }
+
+
+    function validateNumberInput(input) {
+      const errorElement = input.nextElementSibling;
+
+      // Reset validation
+      input.classList.remove('border-red-500');
+      errorElement.classList.add('hidden');
+
+      // Check for empty value
+      if (input.validity.valueMissing) {
+        showError(input, 'Поле обязательно для заполнения');
+        return;
+      }
+
+      // Check if not a number
+      if (isNaN(input.value)) {
+        showError(input, 'Введите числовое значение');
+        input.value = '';
+        return;
+      }
+
+      // Prevent negative numbers
+      if (value < 0) {
+        showError(input, 'Отрицательные числа не допускаются');
+        input.value = '';
+      }
+    }
+
+    function showError(input, message) {
+      input.classList.add('border-red-500');
+      const errorElement = input.nextElementSibling;
+      errorElement.textContent = message;
+      errorElement.classList.remove('hidden');
     }
 
     // Image Uploader
