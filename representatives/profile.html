@@ -1,206 +1,295 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/dist/style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/@lucide/web@latest"></script>
+    <script defer src="src/scripts/showpass.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="/dist/style.css" />
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://unpkg.com/@lucide/web@latest"></script>
-  <script defer src="src/scripts/showpass.js"></script>
-</head>
-
-<body>
-  <div class="flex h-screen">
-    <!-- Sidebar -->
-    <aside id="sidebar" class="sidebar">
-      <div class="mb-10 px-6 py-7">
-        <img src="/src/assets/images/logo.png" alt="Logo" class="h-5" />
-      </div>
-
-      <nav class="flex-1 px-4">
-        <a href="/representatives/index.html" class="sidebar-link">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="mr-3 size-6">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
-          </svg>
-
-          Главная
-        </a>
-        <a href="/representatives/members.html" class="sidebar-link">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="mr-3 size-6">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
-          </svg>
-
-          Участники
-        </a>
-        <a href="/representatives/results.html" class="sidebar-link">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="mr-3 size-6">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
-          </svg>
-
-          Результаты
-        </a>
-
-        <a href="/representatives/chat.html" class="sidebar-link">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="mr-3 size-6">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
-          </svg>
-
-          Чат
-        </a>
-      </nav>
-
-      <div class="p-4">
-        <a href="/representatives/profile.html" class="sidebar-link active">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="mr-3 size-6">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-          </svg>
-
-          Профиль
-        </a>
-      </div>
-    </aside>
-
-    <!-- Overlay -->
-    <div id="overlay" class="fixed inset-0 z-10 hidden cursor-pointer bg-black/50 transition lg:hidden"
-      onclick="toggleSidebar()"></div>
-
-    <!-- Main Content -->
-    <div class="flex flex-1 flex-col overflow-hidden">
-      <!-- Top Bar -->
-      <header class="border-gray-border border-b bg-white">
-        <div class="flex items-center justify-between px-6 py-4">
-          <div class="flex items-center">
-            <button class="mr-4 cursor-pointer text-gray-600 hover:text-gray-900 lg:hidden" onclick="toggleSidebar()">
-              <i data-lucide="menu" class="h-6 w-6"></i>
-            </button>
-            <h1 class="text-xl max-md:hidden">Добро пожаловать, Айжан 👋</h1>
-          </div>
-          <div class="flex items-center space-x-4">
-            <button class="text-orange-primary bg-orange-secondary cursor-pointer rounded-full p-1">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
-              </svg>
-            </button>
-            <div class="flex items-center space-x-3">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&h=64&fit=crop" alt="Profile"
-                class="h-10 w-10 rounded-full" />
-              <div>
-                <p class="font-bold">Айжан Ахметова</p>
-                <div class="flex items-center space-x-1 text-sm text-primary">
-                  <span>Представитель</span>
-                  <img src="https://flagcdn.com/w40/kz.png" alt="Флаг Казахстана" class="h-3 w-5 object-contain">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <!-- Dashboard Content -->
-      <main class="flex-1 overflow-y-auto p-6">
-
-        <!-- Tabs -->
-        <div class="tabs w-fit">
-          <a href="/representatives/profile.html" class="tabs-link active">Личные данные</a>
-          <a href="/representatives/profile-setting.html" class="tabs-link">Настройки</a>
+  <body>
+    <div class="flex h-screen">
+      <!-- Sidebar -->
+      <aside id="sidebar" class="sidebar">
+        <div class="mb-10 px-6 py-7">
+          <img src="/src/assets/images/logo.png" alt="Logo" class="h-5" />
         </div>
 
-        <div class="mb-2 flex items-center justify-between">
-          <h1 class="text font-semibold text-base">Личные данные</h1>
+        <nav class="flex-1 px-4">
+          <a href="/representatives/index.html" class="sidebar-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="mr-3 size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z"
+              />
+            </svg>
+
+            Главная
+          </a>
+          <a href="/representatives/members.html" class="sidebar-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="mr-3 size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"
+              />
+            </svg>
+
+            Участники
+          </a>
+          <a href="/representatives/results.html" class="sidebar-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="mr-3 size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"
+              />
+            </svg>
+
+            Результаты
+          </a>
+
+          <a href="/representatives/chat.html" class="sidebar-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="mr-3 size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
+              />
+            </svg>
+
+            Чат
+          </a>
+        </nav>
+
+        <div class="p-4">
+          <a href="/representatives/profile.html" class="sidebar-link active">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="mr-3 size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+              />
+            </svg>
+
+            Профиль
+          </a>
         </div>
+      </aside>
 
-        <div class="mt-6 space-y-6">
-          <div class="border-default grid grid-cols-1 gap-4 rounded-2xl p-5 sm:grid-cols-2" style="width: 800px;">
-            <div>
-              <label class="mb-1 block text-sm font-medium text-gray-700">ID представителя
-              </label>
-              <p class="input-base border-default">010203</p>
-            </div>
-            <div>
-              <label class="mb-1 block text-sm font-medium text-gray-700">Email
-              </label>
-              <p class="input-base border-default">ivan.ivanov@example.com</p>
-            </div>
-            <div>
-              <label class="mb-1 block text-sm font-medium text-gray-700">ФИО
-              </label>
-              <p class="input-base border-default">Айжан Ахметова</p>
-            </div>
-            <div>
-              <label class="mb-1 block text-sm font-medium text-gray-700">ФИО на английском
-              </label>
-              <p class="input-base border-default">Ayzhan Akhmetova</p>
-            </div>
-            <div>
-              <label class="mb-1 block text-sm font-medium text-gray-700">Страна
-              </label>
-              <p class="input-base border-default">Казахстан</p>
-            </div>
-            <div>
-              <label class="space"></label>
-            </div>
-            <div class="relative">
-              <p class="text-primary text-xs">Изображение</p>
-              <div class="space" style="height:5px"></div>
-              <div class="flex items-center space-x-3">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&h=64&fit=crop" alt="Profile"
-                  class="h-15 w-15 rounded-full" />
-                <div>
-                  <p class="text-primary text-sm">file-name.jpeg</p>
-                </div>
-              </div>
-            </div>
-          </div>
+      <!-- Overlay -->
+      <div
+        id="overlay"
+        class="fixed inset-0 z-10 hidden cursor-pointer bg-black/50 transition lg:hidden"
+        onclick="toggleSidebar()"
+      ></div>
 
-          <div class="flex items-center justify-between">
-            <button class="btn-outline btn--orange">
-              <span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                  stroke="currentColor" class="size-5">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+      <!-- Main Content -->
+      <div class="flex flex-1 flex-col overflow-hidden">
+        <!-- Top Bar -->
+        <header class="border-gray-border border-b bg-white">
+          <div class="flex items-center justify-between px-6 py-4">
+            <div class="flex items-center">
+              <button
+                class="mr-4 cursor-pointer text-gray-600 hover:text-gray-900 lg:hidden"
+                onclick="toggleSidebar()"
+              >
+                <i data-lucide="menu" class="h-6 w-6"></i>
+              </button>
+              <h1 class="text-xl max-md:hidden">Добро пожаловать, Айжан 👋</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+              <button
+                class="text-orange-primary bg-orange-secondary cursor-pointer rounded-full p-1"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"
+                  />
                 </svg>
-              </span>
-              Редактировать
-            </button>
+              </button>
+              <div class="flex items-center space-x-3">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&h=64&fit=crop"
+                  alt="Profile"
+                  class="h-10 w-10 rounded-full"
+                />
+                <div>
+                  <p class="font-bold">Айжан Ахметова</p>
+                  <div class="text-primary flex items-center space-x-1 text-sm">
+                    <span>Представитель</span>
+                    <img
+                      src="https://flagcdn.com/w40/kz.png"
+                      alt="Флаг Казахстана"
+                      class="h-3 w-5 object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </header>
 
-      </main>
+        <!-- Dashboard Content -->
+        <main class="flex-1 overflow-y-auto p-6">
+          <!-- Tabs -->
+          <div class="tabs w-fit">
+            <a href="/representatives/profile.html" class="tabs-link active"
+              >Личные данные</a
+            >
+            <a href="/representatives/profile-setting.html" class="tabs-link"
+              >Настройки</a
+            >
+          </div>
+
+          <div class="mb-2 flex items-center justify-between">
+            <h1 class="text text-base font-semibold">Личные данные</h1>
+          </div>
+
+          <div class="mt-6 space-y-6">
+            <div
+              class="border-default grid grid-cols-1 gap-4 rounded-2xl p-5 sm:grid-cols-2"
+              style="width: 800px"
+            >
+              <div>
+                <label class="mb-1 block text-sm font-medium text-gray-700"
+                  >ID представителя
+                </label>
+                <p class="input-base border-default">010203</p>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-gray-700"
+                  >Email
+                </label>
+                <p class="input-base border-default">ivan.ivanov@example.com</p>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-gray-700"
+                  >ФИО
+                </label>
+                <p class="input-base border-default">Айжан Ахметова</p>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-gray-700"
+                  >ФИО на английском
+                </label>
+                <p class="input-base border-default">Ayzhan Akhmetova</p>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-gray-700"
+                  >Страна
+                </label>
+                <p class="input-base border-default">Казахстан</p>
+              </div>
+              <div>
+                <label class="space"></label>
+              </div>
+              <div class="relative">
+                <p class="text-primary text-xs">Изображение</p>
+                <div class="space" style="height: 5px"></div>
+                <div class="flex items-center space-x-3">
+                  <img
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&h=64&fit=crop"
+                    alt="Profile"
+                    class="h-15 w-15 rounded-full"
+                  />
+                  <div>
+                    <p class="text-primary text-sm">file-name.jpeg</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <button class="btn-outline btn--orange">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                    />
+                  </svg>
+                </span>
+                Редактировать
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
     </div>
-  </div>
 
-  <script>
-    lucide.createIcons()
+    <script>
+      lucide.createIcons()
 
-    function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar')
-      const overlay = document.getElementById('overlay')
-      sidebar.classList.toggle('active')
-      overlay.classList.toggle('hidden')
-    }
+      function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar')
+        const overlay = document.getElementById('overlay')
+        sidebar.classList.toggle('active')
+        overlay.classList.toggle('hidden')
+      }
 
-    function toggleModal() {
-      const modal = document.getElementById('modal')
-      const overlay = document.getElementById('overlayModal')
-      overlay.classList.toggle('hidden')
-      modal.classList.toggle('hidden')
-    }
-  </script>
-</body>
-
+      function toggleModal() {
+        const modal = document.getElementById('modal')
+        const overlay = document.getElementById('overlayModal')
+        overlay.classList.toggle('hidden')
+        modal.classList.toggle('hidden')
+      }
+    </script>
+  </body>
 </html>

@@ -149,7 +149,7 @@
 }
 
 .tabs {
-  @apply border-gray-border mb-6 flex space-x-6 border-b text-sm font-medium;
+  @apply border-gray-border mb-6 flex space-x-3 border-b text-sm font-medium;
 }
 
 .tabs .tabs-link {
@@ -258,6 +258,13 @@
   grid-template-areas: 'a b b c';
 }
 
+@media screen and (max-width: 80rem) {
+.grid-cards {
+    grid-template-areas: 'a c'
+                        'b b';
+  }
+}
+
 .grid-cards > * {
   height: 183px;
 }
@@ -284,6 +291,10 @@
 
 .switch-btn.active {
   @apply border-orange-primary text-orange-primary bg-orange-secondary;
+}
+
+.truncate {
+  @apply max-sm:max-w-[7.5rem];
 }
 
 /* banner */
@@ -362,6 +373,18 @@
 
 .d-level.easy {
   @apply bg-green-secondary text-green-primary;
+}
+
+.chart-tab {
+  @apply border-blue-primary border-1 px-3 py-1.5 rounded-xl cursor-pointer;
+}
+
+.chart-tab.active {
+  @apply bg-blue-primary text-white;
+}
+
+.tab-pane.active {
+  @apply block
 }
 
 /* Chart Styles */

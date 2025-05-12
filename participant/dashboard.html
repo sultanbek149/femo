@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/dist/style.css" />
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://unpkg.com/@lucide/web@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -19,7 +20,7 @@
       </div>
 
       <nav class="flex-1 px-4">
-        <a href="#" class="sidebar-link active">
+        <a href="" class="sidebar-link active">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="mr-3 size-6">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -28,7 +29,7 @@
 
           Главная
         </a>
-        <a href="#" class="sidebar-link">
+        <a href="/participant/olympiads.html" class="sidebar-link">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="mr-3 size-6">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -36,7 +37,7 @@
           </svg>
           Олимпиады
         </a>
-        <a href="#" class="sidebar-link">
+        <a href="/participant/tasks.html" class="sidebar-link">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="mr-3 size-6">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -45,7 +46,7 @@
 
           Задачи
         </a>
-        <a href="#" class="sidebar-link">
+        <a href="/participant/certificates.html" class="sidebar-link">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="mr-3 size-6">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -54,7 +55,7 @@
 
           Сертификаты
         </a>
-        <a href="#" class="sidebar-link">
+        <a href="/participant/rate-overall.html" class="sidebar-link">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="mr-3 size-6">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -66,7 +67,7 @@
       </nav>
 
       <div class="p-4">
-        <a href="#" class="sidebar-link">
+        <a href="/participant/" class="sidebar-link">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="mr-3 size-6">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -75,7 +76,7 @@
 
           Помощь
         </a>
-        <a href="#" class="sidebar-link">
+        <a href="/participant/my-way.html" class="sidebar-link">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="mr-3 size-6">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -125,7 +126,7 @@
       <!-- Dashboard Content -->
       <main class="flex-1 overflow-y-auto p-6">
         <!-- Summary Cards -->
-        <div class="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div class="mb-6 grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-4">
           <!-- Card 1 -->
           <div class="bg-red-secondary border-default flex items-center space-x-5 rounded-xl p-6">
             <img src="/src/assets/images/paper.png" class="h-12 w-12" alt="paper" />
@@ -145,7 +146,8 @@
           </div>
 
           <!-- Card 3 -->
-          <a href="/participant/rate-overall.html" class="bg-green-secondary border-default relative flex items-center space-x-5 rounded-xl p-6">
+          <a href="/participant/rate-overall.html"
+            class="bg-green-secondary border-default relative flex items-center space-x-5 rounded-xl p-6">
             <img src="/src/assets/images/cup.png" class="h-12 w-12" alt="paper" />
             <div>
               <p class="text-sm">Лучший рейтинг</p>
@@ -170,41 +172,27 @@
           </div>
         </div>
 
-        <div class="mb-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div class="mb-6 grid grid-cols-1 gap-6 xl:grid-cols-2">
           <!-- Activity Chart -->
-          <div class="border-default col-span-1 rounded-xl bg-white p-6">
-            <div class="mb-6 flex items-center justify-between">
-              <h2 class="text-lg font-bold">Активность</h2>
-              <div class="flex space-x-2">
-                <button onclick="switchPeriod('year')"
-                  class="period-tab cursor-pointer rounded-lg px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
-                  Год
-                </button>
-                <button onclick="switchPeriod('month')"
-                  class="period-tab cursor-pointer rounded-lg px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
-                  Месяц
-                </button>
-                <button onclick="switchPeriod('week')"
-                  class="period-tab cursor-pointer rounded-lg bg-gray-900 px-4 py-2 text-sm text-white">
+          <div class="border-default bg-blue-secondary rounded-xl p-4">
+            <div class="mb-6 flex items-center justify-between max-sm:flex-col max-sm:items-start">
+              <h3 class="text-lg font-bold max-sm:mb-2">Активность в задачах</h3>
+
+              <div class="flex items-center gap-2">
+                <button class="chart-tab active">
                   Неделя
                 </button>
+                <button class="chart-tab">
+                  Месяц
+                </button>
+                <button class="chart-tab">
+                  Год
+                </button>
               </div>
             </div>
-            <div class="relative h-64">
-              <svg id="activity-chart" class="h-full w-full"></svg>
-              <div class="absolute top-0 left-0 flex h-full w-8 flex-col justify-between text-sm text-gray-600">
-                <span>15</span>
-                <span>10</span>
-                <span>5</span>
-                <span>0</span>
-              </div>
-            </div>
-            <div class="mt-4 flex justify-between text-sm text-gray-600">
-              <span>08.03.25</span>
-              <span>08.03.25</span>
-              <span>08.03.25</span>
-              <span>08.03.25</span>
-              <span>14.03.25</span>
+
+            <div class="chart-container relative h-86" id="myTabContent">
+              <canvas id="myChart1"></canvas>
             </div>
           </div>
 
@@ -212,14 +200,209 @@
           <div class="border-default bg-orange-secondary col-span-1 h-fit overflow-hidden rounded-xl px-6 pt-6">
             <div class="mb-6 flex items-center justify-between">
               <h2 class="text-lg font-bold">Мои задачи</h2>
-              <a href="#" class="text-orange-primary flex text-sm font-bold">
+              <button onclick="toggleModal()" class="text-orange-primary flex text-sm font-bold cursor-pointer">
                 Посмотреть все
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
                   <path fill-rule="evenodd"
                     d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
                     clip-rule="evenodd" />
                 </svg>
-              </a>
+              </button>
+              <div id="overlayModal" class="overlay fixed inset-0 z-20 hidden bg-black/50 transition"></div>
+
+              <div id="modal" class="modal fixed max-sm:inset-x-4 top-18 sm:right-10 z-30 hidden sm:w-full max-w-lg">
+                <div class="relative">
+                  <div class="flex flex-col space-y-4 rounded-3xl bg-white p-4 pt-6 text-base">
+                    <p class="text-xl font-bold">Уведомление</p>
+
+                    <div class="tabs !mb-4 justify-between overflow-x-auto">
+                      <div class="tabs-link active flex cursor-pointer items-center gap-1" data-tab="all">
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                          </svg>
+                        </span>
+                        Все
+                        <span class="count-msg">4</span>
+                      </div>
+                      <div class="tabs-link flex cursor-pointer items-center gap-1" data-tab="users">
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                          </svg>
+                        </span>
+                        Пользователи
+                        <span class="count-msg">0</span>
+                      </div>
+                      <div class="tabs-link flex cursor-pointer items-center gap-1" data-tab="olympiads">
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                          </svg>
+                        </span>
+                        Олимпиады
+                        <span class="count-msg">1</span>
+                      </div>
+                      <div class="tabs-link flex cursor-pointer items-center gap-1" data-tab="results">
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                          </svg>
+                        </span>
+                        Результаты
+                        <span class="count-msg">2</span>
+                      </div>
+                    </div>
+
+                    <div class="tabs-content scrollbar max-h-[70vh] overflow-y-scroll pe-2">
+                      <div class="tabs-notification" data-tab="users">
+                        ...
+                      </div>
+
+                      <!-- Notification 2 (Olympiad-related) -->
+                      <div class="tabs-notification" data-tab="olympiads">
+                        ...
+                      </div>
+
+                      <!-- Notification 3 (Result-related) -->
+                      <div class="tabs-notification" data-tab="results">
+                        ...
+                      </div>
+
+                      <!-- Notification 1 -->
+                      <div class="tabs-notification flex items-start gap-4 rounded-2xl bg-white p-4">
+                        <span class="text-violet-primary bg-violet-secondary rounded-full p-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M6.75 2.994v2.25m10.5-2.25v2.25m-14.252 13.5V7.491a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v11.251m-18 0a2.25 2.25 0 0 0 2.25 2.25h13.5a2.25 2.25 0 0 0 2.25-2.25m-18 0v-7.5a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v7.5m-6.75-6h2.25m-9 2.25h4.5m.002-2.25h.005v.006H12v-.006Zm-.001 4.5h.006v.006h-.006v-.005Zm-2.25.001h.005v.006H9.75v-.006Zm-2.25 0h.005v.005h-.006v-.005Zm6.75-2.247h.005v.005h-.005v-.005Zm0 2.247h.006v.006h-.006v-.006Zm2.25-2.248h.006V15H16.5v-.005Z" />
+                          </svg>
+                        </span>
+
+                        <div class="w-full space-y-3">
+                          <div class="flex items-center justify-between">
+                            <div class="flex gap-2 items-center">
+                              <p class="text-sm font-bold">
+                                Задача №2 проверена
+                              </p>
+
+                              <div class="card easy font-bold">
+                                9 / 10
+                              </div>
+                            </div>
+
+                            <a href="#">
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                              </svg>
+                            </a>
+                          </div>
+
+                          <p class="text-gray-primary flex items-center gap-1 text-xs">
+                            <span>5 минут назад</span>
+                            |
+                            <span>Задачи</span>
+                          </p>
+                        </div>
+                      </div>
+
+
+                      <div class="tabs-notification flex items-start gap-4 rounded-2xl bg-white p-4">
+                        <span class="text-blue-primary bg-blue-secondary rounded-full p-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="size-6">
+                            <path
+                              d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" />
+                          </svg>
+                        </span>
+
+                        <div class="w-full space-y-3">
+                          <div class="flex items-center justify-between">
+                            <div class="flex gap-2 items-center">
+                              <p class="text-sm font-bold">
+                                Задача №2 проверена
+                              </p>
+
+                              <div class="card easy font-bold">
+                                9 / 10
+                              </div>
+                            </div>
+
+                            <a href="#">
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                              </svg>
+                            </a>
+                          </div>
+
+                          <p class="text-gray-primary flex items-center gap-1 text-xs">
+                            <span>5 минут назад</span>
+                            |
+                            <span>Задачи</span>
+                          </p>
+                        </div>
+                      </div>
+
+
+                      <div class="tabs-notification flex items-start gap-4 rounded-2xl bg-white p-4">
+                        <span class="text-violet-primary bg-violet-secondary rounded-full p-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
+                          </svg>
+                        </span>
+
+                        <div class="w-full space-y-3">
+                          <div class="flex items-center justify-between">
+                            <div class="flex gap-2 items-center">
+                              <p class="text-sm font-bold">
+                                Задача №2 проверена
+                              </p>
+
+                              <!-- <div class="card easy font-bold">
+                                9 / 10
+                              </div> -->
+                            </div>
+
+                            <a href="#">
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                              </svg>
+                            </a>
+                          </div>
+
+                          <p class="text-gray-primary flex items-center gap-1 text-xs">
+                            <span>5 минут назад</span>
+                            |
+                            <span>Задачи</span>
+                          </p>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <button class="absolute top-6 right-5 cursor-pointer" onclick="toggleModal()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+                      <path fill-rule="evenodd"
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+                        clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
             <div class="tasks space-y-4 overflow-hidden pr-2 pb-4">
               <!-- Task 1 -->
@@ -314,7 +497,8 @@
           <div class="border-default overflow-hidden rounded-xl bg-white">
             <div class="mb-4 flex items-center justify-between px-6 pt-6">
               <h2 class="text-lg font-bold">Общий рейтинг</h2>
-              <a href="#" class="flex items-center font-bold text-orange-500 hover:text-orange-600 text-sm">
+              <a href="/participant/rate-overall.html"
+                class="flex items-center text-sm font-bold text-orange-500 hover:text-orange-600">
                 Посмотреть все
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
                   <path fill-rule="evenodd"
@@ -508,7 +692,6 @@
   <script>
     lucide.createIcons()
 
-
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar')
       const overlay = document.getElementById('overlay')
@@ -523,112 +706,142 @@
       modal.classList.toggle('hidden')
     }
 
+    // Store chart instances globally
+    let chartInstances = [];
+
     // Chart data for different periods
-    const chartData = {
-      week: [
-        { date: '08.03.25', value: 1 },
-        { date: '09.03.25', value: 4 },
-        { date: '10.03.25', value: 2 },
-        { date: '11.03.25', value: 8 },
-        { date: '12.03.25', value: 1 },
-        { date: '13.03.25', value: 6 },
-        { date: '14.03.25', value: 12 },
-      ],
-      month: [
-        { date: '01.03.25', value: 3 },
-        { date: '08.03.25', value: 5 },
-        { date: '15.03.25', value: 7 },
-        { date: '22.03.25', value: 4 },
-        { date: '29.03.25', value: 9 },
-      ],
-      year: [
-        { date: 'Янв', value: 20 },
-        { date: 'Фев', value: 35 },
-        { date: 'Мар', value: 28 },
-        { date: 'Апр', value: 45 },
-        { date: 'Май', value: 30 },
-        { date: 'Июн', value: 50 },
-      ],
-    }
+    document.addEventListener('DOMContentLoaded', function () {
 
-    function drawChart(data) {
-      const svg = document.getElementById('activity-chart')
-      const width = svg.clientWidth
-      const height = svg.clientHeight
-      const padding = 40
+      const tabs = document.querySelectorAll('.tabs-link')
+      const notifications = document.querySelectorAll('.tabs-notification')
 
-      // Clear previous chart
-      svg.innerHTML = ''
+      // Add click event listeners to tabs
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', function () {
+          const tabType = this.dataset.tab
 
-      // Calculate scales
-      const maxValue = Math.max(...data.map((d) => d.value))
-      const xScale = (width - padding * 2) / (data.length - 1)
-      const yScale = (height - padding * 2) / maxValue
+          // Remove active class from all tabs
+          tabs.forEach((t) => t.classList.remove('active'))
 
-      // Draw grid lines
-      for (let i = 0; i <= 4; i++) {
-        const y = padding + (height - padding * 2) * (i / 4)
-        const line = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'line'
-        )
-        line.setAttribute('x1', padding)
-        line.setAttribute('y1', y)
-        line.setAttribute('x2', width - padding)
-        line.setAttribute('y2', y)
-        line.setAttribute('class', 'chart-grid')
-        svg.appendChild(line)
+          // Add active class to clicked tab
+          this.classList.add('active')
+
+          // Filter notifications
+          notifications.forEach((notification) => {
+            if (tabType === 'all' || notification.dataset.tab === tabType) {
+              notification.style.display = 'flex'
+            } else {
+              notification.style.display = 'none'
+            }
+          })
+        })
+      })
+
+
+
+      const chartsdata = [
+        {
+          labels: ["1 марта", "2 марта", "3 марта", "4 марта", "5 марта", "6 марта", "7 марта"],
+        },
+        {
+          labels: ["1 сентябрь", "2 октябрь", "3 ноябрь", "4 декабрь", "5 январь", "6 февраль", "7 март"],
+        },
+        {
+          labels: ["2019", "2020", "2021", "2022", "2023", "2024", "2025"],
+        },
+      ]
+
+      // Initialize first chart
+      initializeSingleChart(0);
+
+      const tabEls = document.querySelectorAll('.chart-tab');
+
+      if (tabEls.length > 0) {
+        tabEls.forEach(function (tabEl, index) {
+          tabEl.addEventListener('click', function (event) {
+            // Remove active class from all tabs
+            tabEls.forEach(el => el.classList.remove('active'));
+
+            // Add active class to clicked tab
+            this.classList.add('active');
+
+            // Initialize chart for this tab
+            initializeSingleChart(index);
+          });
+        });
       }
 
-      // Create the line path
-      let pathD = ''
-      data.forEach((point, i) => {
-        const x = padding + i * xScale
-        const y = height - (padding + point.value * yScale)
-        pathD += `${i === 0 ? 'M' : 'L'} ${x},${y}`
-      })
+      function initializeSingleChart(index) {
+        const chart = chartsdata[index];
+        const canvasId = 'myChart1'; // Using single canvas
+        const ctx = document.getElementById(canvasId).getContext('2d');
 
-      // Add the line
-      const path = document.createElementNS(
-        'http://www.w3.org/2000/svg',
-        'path'
-      )
-      path.setAttribute('d', pathD)
-      path.setAttribute('class', 'chart-line')
-      svg.appendChild(path)
+        // Destroy previous chart if exists
+        if (chartInstances[canvasId]) {
+          chartInstances[canvasId].destroy();
+        }
 
-      // Add dots
-      data.forEach((point, i) => {
-        const x = padding + i * xScale
-        const y = height - (padding + point.value * yScale)
+        const dataconfig = {
+          borderColor: '#459ee3',
+          backgroundColor: 'rgba(240, 247, 253, 0.5)',
+          borderWidth: 2,
+          pointRadius: 3,
+          pointHoverRadius: 10,
+          pointBackgroundColor: '#fff',
+          tension: 0.6,
+          fill: true,
+          borderCapStyle: 'round',
+          borderJoinStyle: 'round',
+          pointStyle: 'circle',
+        }
 
-        const dot = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'circle'
-        )
-        dot.setAttribute('cx', x)
-        dot.setAttribute('cy', y)
-        dot.setAttribute('r', 4)
-        dot.setAttribute('class', 'chart-dot')
-        svg.appendChild(dot)
-      })
-    }
+        const config = {
+          type: 'line',
+          data: {
+            labels: chart.labels,
+            datasets: [{
+              data: [0, 1, 2, 3, 4, 5, 6],
+              ...dataconfig
+            }],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                suggestedMax: 6,
+                precision: 0,
+                autoSkip: false,
+                grid: {
+                  drawBorder: false,
+                },
+              },
+              x: {
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  autoSkip: false,
+                },
+              },
+            },
+            plugins: {
+              legend: {
+                display: false,
+              },
+              tooltip: {
+                mode: 'index',
+                intersect: false,
+              },
+            },
+          },
+        }
 
-    function switchPeriod(period) {
-      // Update tab styles
-      document.querySelectorAll('.period-tab').forEach((tab) => {
-        tab.className =
-          'period-tab px-4 py-2 rounded-lg text-sm text-gray-600 hover:bg-gray-50'
-      })
-      event.target.className =
-        'period-tab px-4 py-2 rounded-lg text-sm bg-gray-900 text-white'
-
-      // Draw new chart
-      drawChart(chartData[period])
-    }
-
-    // Initial chart
-    drawChart(chartData.week)
+        // Create new chart and store the instance
+        chartInstances[canvasId] = new Chart(ctx, config);
+      }
+    })
   </script>
 </body>
 
