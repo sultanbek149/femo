@@ -164,11 +164,11 @@ input[type='number'] {
 }
 
 .btn-option {
-  @apply border-gray-border text-primary cursor-pointer rounded-lg border bg-white px-4 py-2 text-sm font-medium;
+  @apply border-gray-border text-primary cursor-pointer rounded-lg border bg-white px-4 py-2 text-sm font-medium outline-none;
 }
 
 .btn-option:has(input:checked) {
-  @apply border-orange-primary text-orange-primary bg-orange-secondary;
+  @apply focus:border-orange-primary text-orange-primary bg-orange-secondary;
 }
 
 .tabs {
@@ -397,6 +397,10 @@ input[type='number'] {
 
 .chatarea {
   @apply max-h-28 w-full resize-none px-3 py-4 focus:outline-none;
+}
+
+.textarea {
+  @apply min-h-20 w-full resize-none px-3 py-4 focus:outline-none;
 }
 
 .d-level {
