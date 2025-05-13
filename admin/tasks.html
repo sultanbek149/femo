@@ -9,6 +9,10 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://unpkg.com/@lucide/web@latest"></script>
   <script defer src="src/scripts/showpass.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
 </head>
 
 <body>
@@ -146,7 +150,7 @@
         <div class="mb-6 flex items-center justify-between">
           <h1 class="text-2xl font-semibold">Управление задачами</h1>
           <div class="flex items-center gap-4">
-            <button onclick="toggleModal()"
+            <button onclick="toggleModal('modalAdd')"
               class="text-orange-primary border-orange-primary flex cursor-pointer items-center gap-2 rounded-xl border-1 bg-white px-4 py-2">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-5">
@@ -156,165 +160,435 @@
               Создать задачу
             </button>
 
-            <div id="overlayModal" class="overlay fixed inset-0 z-20 hidden bg-black/50 transition"></div>
+            <div id="overlayModal" class="overlay fixed inset-0 z-20  bg-black/50 transition"></div>
 
             <!-- Add Task -->
-            <div id="modal" class="modal fixed top-10 left-1/2 z-30 hidden w-full max-w-xl -translate-x-1/2">
+            <div id="modalAdd"
+              class="modal fixed top-18 sm:top-10 sm:left-1/2 z-30  max-sm:inset-x-4 sm:w-full max-w-xl sm:-translate-x-1/2">
               <div class="relative">
                 <div class="flex flex-col rounded-3xl bg-white">
-                  <p class="border-gray-border border-b px-6 pt-6 pb-5 text-2xl font-bold">
+                  <p class="border-gray-border border-b px-6 pt-6 pb-5 text-xl font-bold">
                     Создание задачи
                   </p>
 
-                  <form class="scrollbar max-h-[80vh] overflow-y-auto px-6 py-5">
+                  <div class="scrollbar max-h-[80vh] overflow-y-auto px-4 sm:px-6 py-5">
                     <p class="text-gray-primary mb-2 text-sm">
                       Выбрать тип задачи
                     </p>
                     <div class="flex gap-2">
                       <label class="btn-option">
                         Подготовительная задача
-                        <input type="radio" name="task" value="prepare-task" class="hidden" required checked />
+                        <input type="radio" name="role" value="participant" class="hidden" required checked />
                       </label>
 
                       <label class="btn-option">
                         Задача дня
-                        <input type="radio" name="task" value="daily-task" class="hidden" required />
+                        <input type="radio" name="role" value="representative" class="hidden" required />
                       </label>
-                      <!-- <button  class="">
-                        </button>
-                        <button  class="btn-option">
-                        </button> -->
                     </div>
 
-                    <div class="mt-6 space-y-6">
-                      <div>
-                        <p class="mb-4 text-lg font-semibold text-gray-900">
-                          Общая информация
-                        </p>
-                        <div class="border-default grid grid-cols-1 gap-4 rounded-2xl p-5 sm:grid-cols-2">
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Название задачи
-                              <span class="text-red-primary">*</span></label>
-                            <input type="text" name="task-name" class="input-base border-default" required />
+                    <!-- Participant Form (shown by default) -->
+                    <form id="participant-form" class="role-form">
+                      <div class="mt-6 space-y-6">
+                        <div>
+                          <p class="mb-4 text-lg font-semibold text-gray-900">
+                            Общая информация
+                          </p>
+                          <div class="border-default grid grid-cols-1 gap-4 rounded-2xl p-4 sm:grid-cols-2">
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Название задачи
+                                <span class="text-red-primary">*</span></label>
+                              <input placeholder="FEMO Весна 2025" type="text" class="input-base border-default"
+                                value="FEMO Весна 2025" required />
+                            </div>
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Класс
+                                <span class="text-red-primary">*</span></label>
+                              <div class="relative">
+                                <select id="grades" class="multi-select input-base border-default appearance-none"
+                                  required>
+                                  <option value="1">1 класс</option>
+                                  <option value="2">2 класс</option>
+                                  <option value="3">3 класс</option>
+                                  <option value="4">4 класс</option>
+                                  <option value="5" selected>5 класс</option>
+                                  <option value="6" selected>6 класс</option>
+                                  <option value="7">7 класс</option>
+                                  <option value="8">8 класс</option>
+                                  <option value="9">9 класс</option>
+                                  <option value="10">10 класс</option>
+                                  <option value="11">11 класс</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center pe-2 pointer-events-none">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Уровень</label>
+                              <div class="relative">
+                                <select id="level" class="multi-select input-base border-default appearance-none"
+                                  required>
+                                  <option value="easy">Лёгкий</option>
+                                  <option value="middle">Средний</option>
+                                  <option value="hard">Сложный</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center pe-2 pointer-events-none">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Баллы за выполнения
+                                <span class="text-red-primary">*</span>
+                              </label>
+                              <div class="relative">
+                                <select id="status" class="multi-select input-base border-default appearance-none"
+                                  required>
+                                  <option value="5">5</option>
+                                  <option value="10">10</option>
+                                  <option value="15">15</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center pe-2 pointer-events-none">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Статус задачи
+                                <span class="text-red-primary">*</span>
+                              </label>
+                              <div class="relative">
+                                <select id="level" class="multi-select input-base border-default appearance-none"
+                                  required>
+                                  <option value="archive">Архив</option>
+                                  <option value="active">Активно</option>
+                                  <option value="draft">Черновик</option>
+                                  <option value="waiting">Ожидает публикации</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center pe-2 pointer-events-none">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Класс
-                              <span class="text-red-primary">*</span></label>
-                            <input type="number" name="grade" maxlength="2" min="1" max="11"
-                              class="input-base border-default" required />
+                        </div>
+
+                        <div>
+                          <p class="mb-4 text-lg font-semibold text-gray-900">
+                            Содержание задачи
+                          </p>
+                          <div class="border-default grid grid-cols-1 gap-4 rounded-2xl p-4">
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Условие задачи <span
+                                  class="text-red-primary">*</span></label>
+                              <div class="relative">
+                                <textarea oninput="auto_grow(this)" rows="2" placeholder="Введите ваше сообщение..."
+                                  class="textarea input-base border-default px-4" required>На доске написано число 2025. За один ход разрешается: 1. Уменьшить его на 1. 2. Разделить на 5, если оно делится на 5 без остатка. Сколько различных чисел можно получить, выполнив любое количество таких ходов?
+                                </textarea>
+                              </div>
+                            </div>
+
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Прикреплённые
+                                файлы</label>
+                              <a href="#" class="text-orange-primary flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                  stroke-width="1.5" stroke="currentColor" class="size-5">
+                                  <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m.75 12 3 3m0 0 3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                                </svg>
+
+                                Assignment1.pdf (434 KB)
+                              </a>
+                              <a href="#" class="text-orange-primary flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                  stroke-width="1.5" stroke="currentColor" class="size-5">
+                                  <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m.75 12 3 3m0 0 3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                                </svg>
+
+                                Assignment2.pdf (434 KB)
+                              </a>
+                            </div>
                           </div>
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Страна
-                              <span class="text-red-primary">*</span></label>
-                            <input type="text" name="country" class="input-base border-default" required />
-                          </div>
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Город
-                              <span class="text-red-primary">*</span></label>
-                            <input type="text" name="city" class="input-base border-default" required />
-                          </div>
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Школа
-                              <span class="text-red-primary">*</span></label>
-                            <input type="text" name="school" class="input-base border-default" required />
-                          </div>
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Класс
-                              <span class="text-red-primary">*</span></label>
-                            <input type="number" name="class" class="input-base border-default" required />
-                          </div>
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Пароль
-                              <span class="text-red-primary">*</span></label>
-                            <div class="relative">
-                              <input type="password" name="password" class="input-base border-default" required />
-                              <button type="button"
-                                class="absolute top-2.5 right-3 text-gray-500 hover:text-gray-primary">
-                                👁️
-                              </button>
+                        </div>
+
+                        <div>
+                          <p class="mb-3 text-lg font-semibold text-gray-900">
+                            Правильный ответ
+                          </p>
+                          <div class="border-default grid grid-cols-1 gap-4 rounded-2xl p-4">
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Выбрать тип правильного
+                                ответа <span class="text-red-primary mb-1">*</span></label>
+                              <div class="flex gap-2">
+                                <label class="btn-option flex items-center gap-2">
+                                  <span>Число</span>
+                                  <input type="radio" name="answer-type" class="hidden" required checked />
+                                </label>
+
+                                <label class="btn-option flex items-center gap-2">
+                                  <span>Текст</span>
+                                  <input type="radio" name="answer-type" class="hidden" required />
+                                </label>
+                              </div>
+                            </div>
+
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Правильный ответ <span
+                                  class="text-red-primary mb-1">*</span></label>
+                              <input placeholder="15" value="15" type="text" name="answer"
+                                class="input-base border-default" required />
                             </div>
                           </div>
                         </div>
                       </div>
 
-                      <!-- Данные родителя -->
-                      <div>
-                        <p class="mb-4 text-lg font-semibold text-gray-900">
-                          Данные родителя
-                        </p>
-                        <div class="border-default grid grid-cols-1 gap-4 rounded-2xl p-5 sm:grid-cols-2">
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">ФИО родителя</label>
-                            <input type="text" name="parent_name"
-                              class="w-full rounded-xl border border-gray-300 px-3 py-2 outline-none focus:border-black" />
-                          </div>
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Номер телефона
-                              родителя</label>
-                            <input type="tel" name="parent_phone"
-                              class="w-full rounded-xl border border-gray-300 px-3 py-2 outline-none focus:border-black" />
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Данные учителя -->
-                      <div>
-                        <p class="mb-3 text-lg font-semibold text-gray-900">
-                          Данные учителя
-                        </p>
-                        <div class="border-default grid grid-cols-1 gap-4 rounded-2xl p-5 sm:grid-cols-2">
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">ФИО учителя</label>
-                            <input type="text" name="teacher_name"
-                              class="w-full rounded-xl border border-gray-300 px-3 py-2 outline-none focus:border-black" />
-                          </div>
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Номер телефона
-                              учителя</label>
-                            <input type="tel" name="teacher_phone"
-                              class="w-full rounded-xl border border-gray-300 px-3 py-2 outline-none focus:border-black" />
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="flex items-center justify-between">
-                        <button class="btn-outline btn--red">
-                          <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                              stroke="currentColor" class="size-5">
-                              <path stroke-linecap="round" stroke-linejoin="round"
-                                d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
-                            </svg>
-                          </span>
-                          Удалить
-                        </button>
+                      <div class="flex items-center justify-end mt-4">
                         <div class="flex items-center gap-2">
-                          <button class="btn-outline btn--orange">
-                            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="size-5">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                              </svg>
-                            </span>
-                            Отменить
-                          </button>
                           <button class="btn-orange">
                             <span>
                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="size-5">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                               </svg>
+
                             </span>
-                            Сохранить
+                            Создать задачу
                           </button>
                         </div>
                       </div>
-                    </div>
-                  </form>
+                    </form>
+
+                    <!-- Representative Form (hidden by default) -->
+                    <form id="representative-form" class="role-form hidden">
+                      <div class="space-y-6">
+                        <!-- Representative form content -->
+                        <label class="mt-3 mb-2 block text-sm font-medium text-gray-primary">
+                          Задача дня — публикуется для выбранного класса на конкретную дату.
+                        </label>
+
+                        <div>
+                          <p class="mb-4 text-lg font-semibold text-gray-900">
+                            Общая информация
+                          </p>
+                          <div class="border-default grid grid-cols-1 gap-4 rounded-2xl p-4 sm:grid-cols-2">
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Название задачи
+                                <span class="text-red-primary">*</span></label>
+                              <input placeholder="Комбинаторика" type="text" class="input-base border-default"
+                                value="Комбинаторика" required />
+                            </div>
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Класс
+                                <span class="text-red-primary">*</span></label>
+                              <div class="relative">
+                                <select id="grades" class="multi-select input-base border-default appearance-none"
+                                  required>
+                                  <option value="1">1 класс</option>
+                                  <option value="2">2 класс</option>
+                                  <option value="3">3 класс</option>
+                                  <option value="4">4 класс</option>
+                                  <option value="5" selected>5 класс</option>
+                                  <option value="6" selected>6 класс</option>
+                                  <option value="7">7 класс</option>
+                                  <option value="8">8 класс</option>
+                                  <option value="9">9 класс</option>
+                                  <option value="10">10 класс</option>
+                                  <option value="11">11 класс</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center pe-2 pointer-events-none">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Уровень</label>
+                              <div class="relative">
+                                <select id="level" class="multi-select input-base border-default appearance-none"
+                                  required>
+                                  <option value="easy">Лёгкий</option>
+                                  <option value="middle">Средний</option>
+                                  <option value="hard">Сложный</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center pe-2 pointer-events-none">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Баллы за выполнения
+                                <span class="text-red-primary">*</span>
+                              </label>
+                              <div class="relative">
+                                <select id="status" class="multi-select input-base border-default appearance-none"
+                                  required>
+                                  <option value="5">5</option>
+                                  <option value="10">10</option>
+                                  <option value="15">15</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center pe-2 pointer-events-none">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Статус задачи
+                                <span class="text-red-primary">*</span>
+                              </label>
+                              <div class="relative">
+                                <select id="level" class="multi-select input-base border-default appearance-none"
+                                  required>
+                                  <option value="archive">Архив</option>
+                                  <option value="active">Активно</option>
+                                  <option value="draft">Черновик</option>
+                                  <option value="waiting">Ожидает публикации</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center pe-2 pointer-events-none">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Дата публикации</label>
+                              <div class="relative">
+                                <input id="dateRange" class="input-base border-default" placeholder="Выберите дату"
+                                  readonly />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                  stroke-width="1.5" stroke="currentColor"
+                                  class="absolute top-1/2 -translate-y-1/2 right-2 size-5">
+                                  <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                                </svg>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div>
+                          <p class="mb-4 text-lg font-semibold text-gray-900">
+                            Содержание задачи
+                          </p>
+                          <div class="border-default grid grid-cols-1 gap-4 rounded-2xl p-4">
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Условие задачи <span
+                                  class="text-red-primary">*</span></label>
+                              <div class="relative">
+                                <textarea oninput="auto_grow(this)" rows="2" placeholder="Введите ваше сообщение..."
+                                  class="textarea input-base border-default px-4" required>На доске написано число 2025. За один ход разрешается: 1. Уменьшить его на 1. 2. Разделить на 5, если оно делится на 5 без остатка. Сколько различных чисел можно получить, выполнив любое количество таких ходов?
+                                </textarea>
+                              </div>
+                            </div>
+
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Прикреплённые
+                                файлы</label>
+                              <a href="#" class="text-orange-primary flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                  stroke-width="1.5" stroke="currentColor" class="size-5">
+                                  <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m.75 12 3 3m0 0 3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                                </svg>
+
+                                Assignment1.pdf (434 KB)
+                              </a>
+                              <a href="#" class="text-orange-primary flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                  stroke-width="1.5" stroke="currentColor" class="size-5">
+                                  <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m.75 12 3 3m0 0 3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                                </svg>
+
+                                Assignment2.pdf (434 KB)
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div>
+                          <p class="mb-3 text-lg font-semibold text-gray-900">
+                            Правильный ответ
+                          </p>
+                          <div class="border-default grid grid-cols-1 gap-4 rounded-2xl p-4">
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Выбрать тип правильного
+                                ответа <span class="text-red-primary mb-1">*</span></label>
+                              <div class="flex gap-2">
+                                <label class="btn-option flex items-center gap-2">
+                                  <span>Число</span>
+                                  <input type="radio" name="answer-type" class="hidden" required checked />
+                                </label>
+
+                                <label class="btn-option flex items-center gap-2">
+                                  <span>Текст</span>
+                                  <input type="radio" name="answer-type" class="hidden" required />
+                                </label>
+                              </div>
+                            </div>
+
+                            <div>
+                              <label class="mb-1 block text-sm font-medium text-gray-primary">Правильный ответ <span
+                                  class="text-red-primary mb-1">*</span></label>
+                              <input placeholder="15" value="15" type="text" name="answer"
+                                class="input-base border-default" required />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="flex items-center justify-end mt-4">
+                        <div class="flex items-center gap-2">
+                          <button class="btn-orange">
+                            <span>
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                              </svg>
+
+                            </span>
+                            Создать задачу
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
 
-                <button class="absolute top-6 right-5 cursor-pointer" onclick="toggleModal()">
+                <button type="button" class="absolute top-6 right-5 cursor-pointer" onclick="toggleModal('modalAdd')">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
                     <path fill-rule="evenodd"
                       d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
@@ -378,7 +652,7 @@
           </div>
         </div>
         <div class="border-default mb-6 overflow-x-auto rounded-2xl border">
-          <table class="table-tasks w-full rounded-2xl pb-6">
+          <table class="table-tasks min-w-[72.5rem] w-full rounded-2xl pb-6">
             <thead>
               <tr class="border-b border-gray-200">
                 <th class="p-table">
@@ -604,12 +878,67 @@
       overlay.classList.toggle('hidden')
     }
 
-    function toggleModal() {
-      const modal = document.getElementById('modal')
+    function toggleModal(modalId, show = null) {
+      const modal = document.getElementById(modalId)
       const overlay = document.getElementById('overlayModal')
-      overlay.classList.toggle('hidden')
-      modal.classList.toggle('hidden')
+
+      // Determine visibility
+      const shouldShow = show !== null ? show : modal.classList.contains('hidden')
+
+      // Manage overlay
+      overlay.classList.toggle('hidden', !shouldShow)
+
+      // Toggle modal
+      modal.classList.toggle('hidden', !shouldShow)
+
+      // Close other modals
+      document.querySelectorAll('.modal').forEach((m) => {
+        if (m.id !== modalId) m.classList.add('hidden')
+      })
+
+      // Body scroll control
+      document.body.style.overflow = shouldShow ? 'hidden' : 'auto'
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const roleRadios = document.querySelectorAll('input[name="role"]');
+      const roleForms = document.querySelectorAll('.role-form');
+
+      roleRadios.forEach(radio => {
+        radio.addEventListener('change', function () {
+          const selectedValue = this.value;
+
+          roleForms.forEach(form => {
+            if (form.id === `${selectedValue}-form`) {
+              form.classList.remove('hidden');
+            } else {
+              form.classList.add('hidden');
+            }
+          });
+        });
+      });
+
+      // Handle form submissions
+      document.getElementById('participant-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        // Handle participant form submission
+      });
+
+      document.getElementById('representative-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        // Handle representative form submission
+      });
+    });
+
+    flatpickr.localize(flatpickr.l10ns.ru)
+
+    flatpickr('#dateRange', {
+      mode: 'range',
+      dateFormat: 'd.m.Y',
+      locale: {
+        firstDayOfWeek: 1, // Monday
+      },
+    })
   </script>
 </body>
 

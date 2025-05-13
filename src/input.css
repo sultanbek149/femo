@@ -400,7 +400,7 @@ input[type='number'] {
 }
 
 .textarea {
-  @apply min-h-20 w-full resize-none px-3 py-4 focus:outline-none;
+  @apply min-h-28 w-full resize-none px-3 py-2 focus:outline-none;
 }
 
 .d-level {

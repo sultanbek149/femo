@@ -407,7 +407,7 @@
                               сертификата</label>
                             <div class="relative">
                               <textarea oninput="auto_grow(this)" rows="2" placeholder="Введите ваше сообщение..."
-                                class="textarea input-base border-default px-4"></textarea>
+                                class="textarea input-base border-default px-4 scrollbar"></textarea>
                             </div>
                           </div>
 
@@ -700,7 +700,6 @@
 
                             <div>
                               <label class="mb-1 block text-sm font-medium text-gray-primary">Период этапа</label>
-
                               <div class="relative">
                                 <input id="dateRange" class="input-base border-default" placeholder="Выберите дату"
                                   readonly />
@@ -1051,7 +1050,7 @@
                 </td>
                 <td>
                   <div class="flex justify-between gap-2 *:cursor-pointer">
-                    <button class="text-gray-400 hover:text-red-500">
+                    <button type="button" onclick="toggleModal('modalDel')" class="text-gray-400 hover:text-red-500">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
