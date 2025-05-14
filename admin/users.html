@@ -128,11 +128,11 @@
               </svg>
             </button>
             <div class="flex items-center space-x-3">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&h=64&fit=crop" alt="Profile"
+              <img id="user-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&h=64&fit=crop" alt="Profile"
                 class="h-10 w-10 rounded-full" />
               <div>
-                <p class="font-bold">Айжан Ахметова</p>
-                <p class="text-primary text-sm">Участник</p>
+                <p id="user-name" class="font-bold"></p>
+                <p id="user-role" class="text-primary text-sm">Участник</p>
               </div>
             </div>
           </div>
@@ -692,7 +692,7 @@
           <div class="flex flex-wrap gap-4">
             <!-- Search -->
             <div class="relative w-full max-w-[350px]">
-              <input type="text" placeholder="Искать пользователей по имени или ID"
+              <input type="text" placeholder="Искать пользователей по имени или ID" id="search_by_id_or_name"
                 class="focus:ring-orange-primary w-full rounded-lg border border-gray-200 py-2 pr-4 pl-10 focus:border-transparent focus:ring-2 focus:outline-none" />
               <svg xmlns="http://www.w3.org/2000/svg"
                 class="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-gray-primary" fill="none"
@@ -703,33 +703,22 @@
             </div>
 
             <!-- Filters -->
-            <select class="cursor-pointer rounded-lg border border-gray-200 bg-white px-4 py-2">
+            <select class="country-filter cursor-pointer rounded-lg border border-gray-200 bg-white px-4 py-2">
               <option>Все страны</option>
-              <option>Казахстан</option>
+              <!-- <option>Казахстан</option>
               <option>Россия</option>
-              <option>Узбекистан</option>
+              <option>Узбекистан</option> -->
             </select>
 
-            <select class="cursor-pointer rounded-lg border border-gray-200 bg-white px-4 py-2">
-              <option>Роль пользователя</option>
-              <option>Участник</option>
-              <option>Преподаватель</option>
-              <option>Администратор</option>
+            <select class="role-filter cursor-pointer rounded-lg border border-gray-200 bg-white px-4 py-2">
+              <option value="">Все роли</option>
+              <option value="participant">Участник</option> 
+              <option value="representative">Преподаватель</option>
+              <!-- <option>Администратор</option> -->
             </select>
 
-            <select class="cursor-pointer rounded-lg border border-gray-200 bg-white px-4 py-2">
+            <select class="grade-filter cursor-pointer rounded-lg border border-gray-200 bg-white px-4 py-2">
               <option>Все классы</option>
-              <option>1 класс</option>
-              <option>2 класс</option>
-              <option>3 класс</option>
-              <option>4 класс</option>
-              <option>5 класс</option>
-              <option>6 класс</option>
-              <option>7 класс</option>
-              <option>8 класс</option>
-              <option>9 класс</option>
-              <option>10 класс</option>
-              <option>11 класс</option>
             </select>
           </div>
         </div>
@@ -1103,8 +1092,8 @@
       });
     });
   </script>
-  <!-- <script src="/auth.js" defer></script>
-  <script src="/src/admin/users.js" defer></script> -->
+  <script src="/auth.js" defer></script>
+  <script src="/src/admin/users.js" defer></script> 
 </body>
 
 </html>

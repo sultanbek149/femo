@@ -130,11 +130,11 @@
               </svg>
             </button>
             <div class="flex items-center space-x-3">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&h=64&fit=crop" alt="Profile"
+              <img id="user-avatar" src="" alt="Profile"
                 class="h-10 w-10 rounded-full" />
               <div>
-                <p class="font-bold">Айжан Ахметова</p>
-                <p class="text-primary text-sm">Участник</p>
+                <p id="user-name" class="font-bold"></p>
+                <p id="user-role" class="text-primary text-sm"></p>
               </div>
             </div>
           </div>
@@ -150,7 +150,7 @@
             <img src="/src/assets/images/login56x56.png" class="h-12 w-12" alt="paper" />
             <div>
               <p class="text-sm">Зарегистрированные</p>
-              <p class="text-blue-primary text-2xl font-semibold">1240</p>
+              <p class="text-blue-primary text-2xl font-semibold" id="registered-count">0</p>
             </div>
           </div>
 
@@ -159,7 +159,7 @@
             <img src="/src/assets/images/paper.png" class="h-12 w-12" alt="paper" />
             <div>
               <p class="text-sm">Активные олимпиады</p>
-              <p class="text-red-primary text-2xl font-semibold">2</p>
+              <p class="text-red-primary text-2xl font-semibold" id="active-olympiads">0</p>
             </div>
           </div>
           <!-- Card 3 -->
@@ -168,7 +168,7 @@
             <img src="/src/assets/images/stars.png" class="h-12 w-12" alt="paper" />
             <div>
               <p class="text-sm">Средний балл</p>
-              <p class="text-orange-primary text-2xl font-semibold">64</p>
+              <p class="text-orange-primary text-2xl font-semibold" id="average-score">0</p>
             </div>
           </div>
 
@@ -177,7 +177,7 @@
             <img src="/src/assets/images/cube.png" class="h-12 w-12" alt="paper" />
             <div>
               <p class="text-sm">Общее кол-во задач</p>
-              <p class="text-violet-primary text-2xl font-semibold">100</p>
+              <p class="text-violet-primary text-2xl font-semibold" id="total-tasks">0</p>
             </div>
           </div>
         </div>
@@ -200,7 +200,7 @@
             <div class="bg-orange-secondary rounded-xl p-5">
               <p class="mb-4 text-lg font-bold">Текущая олимпиада</p>
 
-              <div class="flex flex-col rounded-2xl bg-white p-4">
+              <div class="olympiad-block flex flex-col rounded-2xl bg-white p-4">
                 <p class="mb-2 font-bold">FEMO Весенний тур 2024</p>
                 <p class="mb-4 text-sm">
                   Зимний этап международной олимпиады для 5–11 классов
@@ -261,23 +261,23 @@
 
               <div class="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
                 <div class="space-y-1 rounded-2xl bg-white p-5">
-                  <p class="text-sm">Количество участников</p>
+                  <p id="participants-count" class="text-sm">Количество участников</p>
                   <p class="text-red-primary text-2xl font-bold">340</p>
                 </div>
 
                 <div class="space-y-1 rounded-2xl bg-white p-5">
                   <p class="text-sm">Страны</p>
-                  <p class="text-2xl font-semibold">🇰🇿, 🇰🇿, 🇰🇿</p>
+                  <p id="countries-list" class="text-2xl font-semibold"></p>
                 </div>
 
                 <div class="space-y-1 rounded-2xl bg-white p-5">
                   <p class="text-sm">Регистрировался сегодня</p>
-                  <p class="text-green-primary text-2xl font-bold">+ 5</p>
+                  <p id="new-today" class="text-green-primary text-2xl font-bold"></p>
                 </div>
 
                 <div class="space-y-1 rounded-2xl bg-white p-5">
                   <p class="text-sm">Оплачено</p>
-                  <p class="text-blue-primary text-2xl font-bold">275</p>
+                  <p id="paid-count" class="text-blue-primary text-2xl font-bold"></p>
                 </div>
               </div>
             </div>
