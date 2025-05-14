@@ -144,11 +144,13 @@
       <!-- Dashboard Content -->
       <main class="flex-1 overflow-y-auto p-6">
         <!-- Tabs -->
-        <div class="tabs w-fit">
-          <a href="/admin/results.html" class="tabs-link">Результаты олимпиады</a>
-          <a href="/admin/results-overall-rate.html" class="tabs-link">Общий рейтинг участников
-          </a>
-          <a href="/admin/results-countries-rate.html" class="tabs-link active">Рейтинг стран</a>
+        <div class="mb-6 overflow-x-auto">
+          <div class="tabs !mb-1 w-md">
+            <a href="/admin/results.html" class="tabs-link">Результаты олимпиады</a>
+            <a href="/admin/results-overall-rate.html" class="tabs-link">Общий рейтинг участников
+            </a>
+            <a href="/admin/results-countries-rate.html" class="tabs-link active">Рейтинг стран</a>
+          </div>
         </div>
 
         <div class="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -172,7 +174,7 @@
         </div>
 
         <div class="banner bg-blue-secondary mb-6 flex justify-between rounded-2xl">
-          <div class="w-3/5 space-y-2 px-6 py-5">
+          <div class="space-y-2 px-6 py-5 sm:w-3/5">
             <p class="title mb-2 text-lg font-bold">
               Как можно заработать ещё баллы?
             </p>
@@ -200,9 +202,11 @@
               просматриваются в профиле участника
             </p>
           </div>
-          <div class="w-2/5 bg-[url('/src/assets/images/man.png')] bg-contain bg-bottom-right bg-no-repeat"></div>
+          <div
+            class="hidden w-2/5 bg-[url('/src/assets/images/man.png')] bg-contain bg-bottom-right bg-no-repeat sm:block">
+          </div>
         </div>
-
+        
         <div class="flex items-center justify-between">
           <h1 class="text-2xl font-semibold">Общий рейтинг участников</h1>
         </div>

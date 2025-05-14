@@ -143,14 +143,10 @@
 
       <!-- Dashboard Content -->
       <main class="flex-1 overflow-y-auto p-6">
-        <div class="mb-2 flex items-center justify-between">
+        <div class="mb-2 flex lg:items-center lg:justify-between flex-col lg:flex-row space-y-2 lg:space-y-0">
           <h1 class="text-2xl font-semibold">Сертификаты участников</h1>
           <div class="flex items-center gap-4">
-            <button onclick="toggleModal()"
-              class="text-orange-primary border-orange-primary flex cursor-pointer items-center gap-1 rounded-xl border-1 bg-white px-4 py-2">
-              Настройка шаблонов
-            </button>
-            <button onclick="toggleModal()"
+            <button onclick="toggleModal('modalCertificate')"
               class="border-orange-primary bg-orange-primary flex cursor-pointer items-center gap-1 rounded-xl border-1 px-4 py-2 text-white">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
@@ -162,169 +158,30 @@
 
             <div id="overlayModal" class="overlay fixed inset-0 z-20 hidden bg-black/50 transition"></div>
 
-            <!-- Add Olympiad -->
-            <div id="modal" class="modal fixed top-10 left-1/2 z-30 hidden w-full max-w-xl -translate-x-1/2">
+            <!-- modalCertificate -->
+            <div id="modalCertificate"
+              class="modal fixed top-1/2 left-1/2 z-30 hidden w-full max-w-md -translate-x-1/2 -translate-y-1/2 px-4 sm:px-0">
               <div class="relative">
-                <div class="flex flex-col rounded-3xl bg-white">
-                  <p class="border-gray-border border-b px-6 pt-6 pb-5 text-2xl font-bold">
-                    Создание задачи
-                  </p>
+                <div class="flex flex-col rounded-3xl bg-white shadow-xl">
+                  <div class="flex items-center justify-end px-6 pt-6">
+                    <button type="button" onclick="toggleModal('modalCertificate')"
+                      class="text-gray-400 hover:text-gray-500">
+                      <i data-lucide="x" class="h-5 w-5 cursor-pointer"></i>
+                    </button>
+                  </div>
 
-                  <form class="scrollbar max-h-[80vh] overflow-y-auto px-6 py-5">
-                    <p class="text-gray-primary mb-2 text-sm">
-                      Выбрать тип задачи
+                  <div class="px-4 sm:px-6 pb-4">
+                    <img src="/src/assets//images/horse.png" alt="horse" class="w-fit mx-auto">
+                    <p class="mb-2 font-bold text-xl text-center">
+                      Сертификаты успешно отправлены
                     </p>
-                    <div class="flex gap-2">
-                      <label class="btn-option">
-                        Подготовительная задача
-                        <input type="radio" name="task" value="prepare-task" class="hidden" required checked />
-                      </label>
-
-                      <label class="btn-option">
-                        Задача дня
-                        <input type="radio" name="task" value="daily-task" class="hidden" required />
-                      </label>
-                      <!-- <button  class="">
-                        </button>
-                        <button  class="btn-option">
-                        </button> -->
-                    </div>
-
-                    <div class="mt-6 space-y-6">
-                      <div>
-                        <p class="mb-4 text-lg font-semibold text-gray-900">
-                          Общая информация
-                        </p>
-                        <div class="border-default grid grid-cols-1 gap-4 rounded-2xl p-5 sm:grid-cols-2">
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Название задачи
-                              <span class="text-red-primary">*</span></label>
-                            <input type="text" name="task-name" class="input-base border-default" required />
-                          </div>
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Класс
-                              <span class="text-red-primary">*</span></label>
-                            <input type="number" name="grade" maxlength="2" min="1" max="11"
-                              class="input-base border-default" required />
-                          </div>
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Страна
-                              <span class="text-red-primary">*</span></label>
-                            <input type="text" name="country" class="input-base border-default" required />
-                          </div>
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Город
-                              <span class="text-red-primary">*</span></label>
-                            <input type="text" name="city" class="input-base border-default" required />
-                          </div>
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Школа
-                              <span class="text-red-primary">*</span></label>
-                            <input type="text" name="school" class="input-base border-default" required />
-                          </div>
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Класс
-                              <span class="text-red-primary">*</span></label>
-                            <input type="number" name="class" class="input-base border-default" required />
-                          </div>
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Пароль
-                              <span class="text-red-primary">*</span></label>
-                            <div class="relative">
-                              <input type="password" name="password" class="input-base border-default" required />
-                              <button type="button"
-                                class="absolute top-2.5 right-3 text-gray-500 hover:text-gray-primary">
-                                👁️
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Данные родителя -->
-                      <div>
-                        <p class="mb-4 text-lg font-semibold text-gray-900">
-                          Данные родителя
-                        </p>
-                        <div class="border-default grid grid-cols-1 gap-4 rounded-2xl p-5 sm:grid-cols-2">
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">ФИО родителя</label>
-                            <input type="text" name="parent_name"
-                              class="w-full rounded-xl border border-gray-300 px-3 py-2 outline-none focus:border-black" />
-                          </div>
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Номер телефона
-                              родителя</label>
-                            <input type="tel" name="parent_phone"
-                              class="w-full rounded-xl border border-gray-300 px-3 py-2 outline-none focus:border-black" />
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Данные учителя -->
-                      <div>
-                        <p class="mb-3 text-lg font-semibold text-gray-900">
-                          Данные учителя
-                        </p>
-                        <div class="border-default grid grid-cols-1 gap-4 rounded-2xl p-5 sm:grid-cols-2">
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">ФИО учителя</label>
-                            <input type="text" name="teacher_name"
-                              class="w-full rounded-xl border border-gray-300 px-3 py-2 outline-none focus:border-black" />
-                          </div>
-                          <div>
-                            <label class="mb-1 block text-sm font-medium text-gray-primary">Номер телефона
-                              учителя</label>
-                            <input type="tel" name="teacher_phone"
-                              class="w-full rounded-xl border border-gray-300 px-3 py-2 outline-none focus:border-black" />
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="flex items-center justify-between">
-                        <button class="btn-outline btn--red">
-                          <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                              stroke="currentColor" class="size-5">
-                              <path stroke-linecap="round" stroke-linejoin="round"
-                                d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
-                            </svg>
-                          </span>
-                          Удалить
-                        </button>
-                        <div class="flex items-center gap-2">
-                          <button class="btn-outline btn--orange">
-                            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="size-5">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                              </svg>
-                            </span>
-                            Отменить
-                          </button>
-                          <button class="btn-orange">
-                            <span>
-                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="size-5">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                              </svg>
-                            </span>
-                            Сохранить
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
+                    <p class="text-xs text-center mb-6">Мы отправили сертификаты на выбранных участников.  Они появятся
+                      в их профилях.
+                    </p>
+                    <p class="text-xs text-center">Всего отправлено: <span class="text-green-primary">38
+                        сертификатов</span></p>
+                  </div>
                 </div>
-
-                <button class="absolute top-6 right-5 cursor-pointer" onclick="toggleModal()">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
-                    <path fill-rule="evenodd"
-                      d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
-                      clip-rule="evenodd" />
-                  </svg>
-                </button>
               </div>
             </div>
           </div>
@@ -686,12 +543,28 @@
       overlay.classList.toggle('hidden')
     }
 
-    function toggleModal() {
-      const modal = document.getElementById('modal')
+    function toggleModal(modalId, show = null) {
+      const modal = document.getElementById(modalId)
       const overlay = document.getElementById('overlayModal')
-      overlay.classList.toggle('hidden')
-      modal.classList.toggle('hidden')
+
+      // Determine visibility
+      const shouldShow = show !== null ? show : modal.classList.contains('hidden')
+
+      // Manage overlay
+      overlay.classList.toggle('hidden', !shouldShow)
+
+      // Toggle modal
+      modal.classList.toggle('hidden', !shouldShow)
+
+      // Close other modals
+      document.querySelectorAll('.modal').forEach((m) => {
+        if (m.id !== modalId) m.classList.add('hidden')
+      })
+
+      // Body scroll control
+      document.body.style.overflow = shouldShow ? 'hidden' : 'auto'
     }
+
   </script>
 </body>
 

@@ -146,9 +146,9 @@
 
       <!-- Dashboard Content -->
       <main class="flex-1 overflow-y-auto p-6">
-        <div class="mb-2 flex items-center justify-between">
+        <div class="mb-2 flex lg:items-center lg:justify-between flex-col lg:flex-row space-y-2 lg:space-y-0">
           <h1 class="text-2xl font-semibold">История платежей</h1>
-          <div class="flex items-center gap-4">
+          <div class="flex items-start sm:items-center gap-2 sm:gap-4 flex-col sm:flex-row">
             <button onclick="toggleModal()"
               class="text-orange-primary border-orange-primary flex cursor-pointer items-center gap-1 rounded-xl border-1 bg-white px-4 py-2">
               Загрузить оценки олимпиды
@@ -375,7 +375,7 @@
           </div>
         </div>
 
-        <div class="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div class="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
           <!-- Card 1 -->
           <div class="bg-orange-secondary border-default flex items-center space-x-5 rounded-xl p-6">
             <div>
@@ -412,7 +412,7 @@
         </div>
 
         <div class="border-default mb-6 overflow-x-auto rounded-2xl border">
-          <table class="table-payments w-full rounded-2xl pb-6">
+          <table class="table-payments min-w-[76rem] rounded-2xl pb-6">
             <thead>
               <tr class="border-b border-gray-200">
                 <th class="p-table">ID</th>
@@ -443,7 +443,14 @@
                 <td>123456</td>
                 <td>Айдаров М.</td>
 
-                <td>FEMO 2023 Зимний тур...</td>
+                <td>
+                  <div>
+                    <p>
+                      FEMO 2023 Зимний тур FEMO 2023 Зимний тур FEMO 2023 Зимний тур
+                    </p>
+                  </div>
+                </td>
+
                 <td>
                   <span class="text-red-primary">-2 000 ₸</span>
                 </td>
@@ -477,8 +484,13 @@
                 <td>123456</td>
                 <td>123456</td>
                 <td>Айдаров М.</td>
-
-                <td>Пополнить баланс</td>
+                <td>
+                  <div>
+                    <p>
+                      Пополнить баланс
+                    </p>
+                  </div>
+                </td>
                 <td>
                   <span class="text-green-primary">+4 000 ₸</span>
                 </td>
@@ -513,8 +525,13 @@
                 <td>123456</td>
                 <td>123456</td>
                 <td>Айдаров М.</td>
-
-                <td>FEMO 2023 Зимний тур...</td>
+                <td>
+                  <div>
+                    <p>
+                      FEMO 2023 Зимний тур...
+                    </p>
+                  </div>
+                </td>
                 <td>
                   <span class="text-red-primary">-2 000 ₸</span>
                 </td>
