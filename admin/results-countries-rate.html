@@ -9,6 +9,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://unpkg.com/@lucide/web@latest"></script>
   <script defer src="src/scripts/showpass.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -153,273 +154,290 @@
           </div>
         </div>
 
-        <div class="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-          <!-- Card 1 -->
-          <div class="bg-red-secondary border-default flex items-center space-x-5 rounded-xl p-6">
-            <img src="/src/assets/images/paper.png" alt="paper" />
-            <div>
-              <p class="text-sm">Участники</p>
-              <p class="text-red-primary text-2xl font-semibold">240</p>
+
+
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- First Chart with Dropdown -->
+          <div class="bg-blue-secondary p-6 rounded-lg">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">Средний % по странам</h2>
+            <div class="mb-4">
+              <label for="dataSelector" class="block text-sm font-medium text-gray-700">Выбрать синтетику</label>
+              <select id="dataSelector" class="bg-white border-default input-base mt-1">
+                <option value="option1">Вариант 1</option>
+                <option value="option2">Вариант 2</option>
+                <option value="option3">Вариант 3</option>
+              </select>
+            </div>
+            <div class="h-80">
+              <canvas id="averageChart"></canvas>
             </div>
           </div>
-          <!-- Card 2--->
 
-          <div class="bg-orange-secondary border-default flex items-center space-x-5 rounded-xl p-6">
-            <img src="/src/assets/images/stars.png" alt="stars" />
-            <div>
-              <p class="text-sm">Средний общий балл по системе</p>
-              <p class="text-orange-primary text-2xl font-semibold">1240</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="banner bg-blue-secondary mb-6 flex justify-between rounded-2xl">
-          <div class="space-y-2 px-6 py-5 sm:w-3/5">
-            <p class="title mb-2 text-lg font-bold">
-              Как можно заработать ещё баллы?
-            </p>
-            <p>
-              <span class="text-blue-primary font-bold">Баллы за олимпиады —</span>
-              получаешь XP за участие в турах. Чем выше место — тем больше
-              баллов.
-            </p>
-
-            <ul class="list-inside list-disc ps-4 marker:ms-1">
-              <li>🥇 1 место — +100 XP</li>
-              <li>🥈 2 место — +70 XP</li>
-              <li>🥉 3 место — +50 XP</li>
-              <li>✅ Участие — +10 XP</li>
-            </ul>
-
-            <p>
-              <span class="text-blue-primary font-bold">Баллы за решение задачи —</span>
-              выполняй подготовительные задачи и ли решишь все задачи до
-              дедлайна, получишь +15 XP дополнительно
-            </p>
-
-            <p>
-              <span class="text-blue-primary font-bold">Награды —</span>
-              просматриваются в профиле участника
-            </p>
-          </div>
-          <div
-            class="hidden w-2/5 bg-[url('/src/assets/images/man.png')] bg-contain bg-bottom-right bg-no-repeat sm:block">
-          </div>
-        </div>
-        
-        <div class="flex items-center justify-between">
-          <h1 class="text-2xl font-semibold">Общий рейтинг участников</h1>
-        </div>
-
-        <!-- Control Panel -->
-        <div class="mt-4 mb-5 rounded-lg bg-white">
-          <div class="flex flex-wrap gap-4">
-            <!-- Search -->
-            <div class="relative w-full max-w-[350px]">
-              <input type="text" placeholder="Искать участника"
-                class="focus:ring-orange-primary w-full rounded-lg border border-gray-200 py-2 pr-4 pl-10 focus:border-transparent focus:ring-2 focus:outline-none" />
-              <svg xmlns="http://www.w3.org/2000/svg"
-                class="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+          <!-- Second Chart -->
+          <div class="bg-green-secondary p-6 rounded-lg">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">% участников с успехом более чем 50%</h2>
+            <div class="mb-6">
+              <label for="olympiadSelector" class="block text-sm font-medium text-gray-700 mb-1">Выбрать
+                олимпиаду</label>
+              <select id="olympiadSelector" class="input-base border-default bg-white mt-1">
+                <option value="math">Выбрать олимпиаду</option>
+                <option value="physics">Физика</option>
+                <option value="chemistry">Химия</option>
+                <option value="biology">Биология</option>
+              </select>
             </div>
 
-            <!-- Filters -->
-
-            <select class="cursor-pointer rounded-lg border border-gray-200 bg-white px-4 py-2">
-              <option>Все страны</option>
-              <option>Казахстан</option>
-              <option>Россия</option>
-              <option>Кыргызстан</option>
-              <option>Грузия</option>
-            </select>
-
-            <select class="cursor-pointer rounded-lg border border-gray-200 bg-white px-4 py-2">
-              <option>Все классы</option>
-              <option>1 класс</option>
-              <option>2 класс</option>
-              <option>3 класс</option>
-              <option>4 класс</option>
-              <option>5 класс</option>
-              <option>6 класс</option>
-              <option>7 класс</option>
-              <option>8 класс</option>
-              <option>9 класс</option>
-              <option>10 класс</option>
-              <option>11 класс</option>
-            </select>
-
-            <select class="cursor-pointer rounded-lg border border-gray-200 bg-white px-4 py-2">
-              <option>Выбрать олимпиаду</option>
-              <option>Идёт сейчас</option>
-              <option>Завершено</option>
-            </select>
+            <div id="resultsContainer" class="space-y-3">
+              <!-- Данные будут обновляться здесь -->
+              <div class="flex justify-between gap-4 items-center p-3">
+                <p class="font-medium w-40 text-start">Казахстан</p>
+                <div class="w-full rounded-2xl bg-white flex h-2">
+                  <div class="w-[85%] bg-green-primary h-full rounded-2xl"></div>
+                </div>
+                <span></span>
+              </div>
+              <div class="flex justify-between gap-4 items-center p-3">
+                <p class="font-medium w-40 text-start">Узбекистан</p>
+                <div class="w-full rounded-2xl bg-white flex h-2">
+                  <div class="w-[85%] bg-green-primary h-full rounded-2xl"></div>
+                </div>
+                <span></span>
+              </div>
+              <div class="flex justify-between gap-4 items-center p-3">
+                <p class="font-medium w-40 text-start">Турция</p>
+                <div class="w-full rounded-2xl bg-white flex h-2">
+                  <div class="w-[85%] bg-green-primary h-full rounded-2xl"></div>
+                </div>
+                <span></span>
+              </div>
+              <div class="flex justify-between gap-4 items-center p-3">
+                <p class="font-medium w-40 text-start">Кыргызстан</p>
+                <div class="w-full rounded-2xl bg-white flex h-2">
+                  <div class="w-[85%] bg-green-primary h-full rounded-2xl"></div>
+                </div>
+                <span></span>
+              </div>
+              <div class="flex justify-between gap-4 items-center p-3">
+                <p class="font-medium w-40 text-start">Азербайджан</p>
+                <div class="w-full rounded-2xl bg-white flex h-2">
+                  <div class="w-[85%] bg-green-primary h-full rounded-2xl"></div>
+                </div>
+                <span></span>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="border-default mb-6 overflow-x-auto rounded-2xl border">
-          <table class="table-overall w-full rounded-2xl pb-6">
-            <thead>
-              <tr class="border-b border-gray-200">
-                <th class="p-table">
-                  <div class="flex items-center gap-1">
-                    Ранк
-                    <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
-                        <path fill-rule="evenodd"
-                          d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z"
-                          clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                  </div>
-                </th>
-                <th class="p-table">Имя участника</th>
-                <th class="p-table">Страна</th>
-                <th class="p-table">Класс</th>
-                <th class="p-table">
-                  <div class="flex items-center gap-1">
-                    Баллы за олимпиаду
-                    <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
-                        <path fill-rule="evenodd"
-                          d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z"
-                          clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                  </div>
-                </th>
-                <th class="p-table">
-                  <div class="flex items-center gap-1">
-                    Баллы за задачи
-                    <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
-                        <path fill-rule="evenodd"
-                          d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z"
-                          clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                  </div>
-                </th>
-                <th class="p-table">
-                  <div class="flex items-center gap-1">
-                    Баллы за награды
-                    <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
-                        <path fill-rule="evenodd"
-                          d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z"
-                          clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                  </div>
-                </th>
-                <th class="p-table">
-                  <div class="flex items-center gap-1">
-                    Общее Баллы
-                    <span>
-                      <img src="/src/assets/images/coin.png" alt="coin" class="h-5 w-5" />
-                    </span>
-                    <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
-                        <path fill-rule="evenodd"
-                          d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z"
-                          clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                  </div>
-                </th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200">
-              <tr class="hover:bg-gray-50">
-                <td>👑</td>
-                <td>Айдана Ержанова</td>
-                <td>🇰🇿, Казахстан</td>
 
-                <td>11</td>
-                <td>600</td>
-                <td>600</td>
-                <td>600</td>
-                <td>3400</td>
-              </tr>
+          <!-- Control Panel -->
+          <div class="mt-4 mb-5 rounded-lg bg-white">
+            <div class="flex flex-wrap gap-4">
+              <!-- Search -->
+              <div class="relative w-full max-w-[350px]">
+                <input type="text" placeholder="Искать участника"
+                  class="focus:ring-orange-primary w-full rounded-lg border border-gray-200 py-2 pr-4 pl-10 focus:border-transparent focus:ring-2 focus:outline-none" />
+                <svg xmlns="http://www.w3.org/2000/svg"
+                  class="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
 
-              <tr class="hover:bg-gray-50">
-                <td>👑</td>
-                <td>Айдана Ержанова</td>
-                <td>🇰🇿, Казахстан</td>
+              <!-- Filters -->
 
-                <td>11</td>
-                <td>600</td>
-                <td>600</td>
-                <td>600</td>
-                <td>3400</td>
-              </tr>
+              <select class="cursor-pointer rounded-lg border border-gray-200 bg-white px-4 py-2">
+                <option>Все страны</option>
+                <option>Казахстан</option>
+                <option>Россия</option>
+                <option>Кыргызстан</option>
+                <option>Грузия</option>
+              </select>
 
-              <tr class="hover:bg-gray-50">
-                <td>👑</td>
-                <td>Айдана Ержанова</td>
-                <td>🇰🇿, Казахстан</td>
+              <select class="cursor-pointer rounded-lg border border-gray-200 bg-white px-4 py-2">
+                <option>Все классы</option>
+                <option>1 класс</option>
+                <option>2 класс</option>
+                <option>3 класс</option>
+                <option>4 класс</option>
+                <option>5 класс</option>
+                <option>6 класс</option>
+                <option>7 класс</option>
+                <option>8 класс</option>
+                <option>9 класс</option>
+                <option>10 класс</option>
+                <option>11 класс</option>
+              </select>
 
-                <td>11</td>
-                <td>600</td>
-                <td>600</td>
-                <td>600</td>
-                <td>3400</td>
-              </tr>
+              <select class="cursor-pointer rounded-lg border border-gray-200 bg-white px-4 py-2">
+                <option>Выбрать олимпиаду</option>
+                <option>Идёт сейчас</option>
+                <option>Завершено</option>
+              </select>
+            </div>
+          </div>
 
-              <tr class="hover:bg-gray-50">
-                <td>4</td>
-                <td>Айдана Ержанова</td>
-                <td>🇰🇿, Казахстан</td>
+          <div class="border-default mb-6 overflow-x-auto rounded-2xl border">
+            <table class="table-overall w-full rounded-2xl pb-6">
+              <thead>
+                <tr class="border-b border-gray-200">
+                  <th class="p-table">
+                    <div class="flex items-center gap-1">
+                      Ранк
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                          <path fill-rule="evenodd"
+                            d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z"
+                            clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                    </div>
+                  </th>
+                  <th class="p-table">Имя участника</th>
+                  <th class="p-table">Страна</th>
+                  <th class="p-table">Класс</th>
+                  <th class="p-table">
+                    <div class="flex items-center gap-1">
+                      Баллы за олимпиаду
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                          <path fill-rule="evenodd"
+                            d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z"
+                            clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                    </div>
+                  </th>
+                  <th class="p-table">
+                    <div class="flex items-center gap-1">
+                      Баллы за задачи
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                          <path fill-rule="evenodd"
+                            d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z"
+                            clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                    </div>
+                  </th>
+                  <th class="p-table">
+                    <div class="flex items-center gap-1">
+                      Баллы за награды
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                          <path fill-rule="evenodd"
+                            d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z"
+                            clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                    </div>
+                  </th>
+                  <th class="p-table">
+                    <div class="flex items-center gap-1">
+                      Общее Баллы
+                      <span>
+                        <img src="/src/assets/images/coin.png" alt="coin" class="h-5 w-5" />
+                      </span>
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                          <path fill-rule="evenodd"
+                            d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z"
+                            clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr class="hover:bg-gray-50">
+                  <td>👑</td>
+                  <td>Айдана Ержанова</td>
+                  <td>🇰🇿, Казахстан</td>
 
-                <td>11</td>
-                <td>600</td>
-                <td>600</td>
-                <td>600</td>
-                <td>3400</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                  <td>11</td>
+                  <td>600</td>
+                  <td>600</td>
+                  <td>600</td>
+                  <td>3400</td>
+                </tr>
 
-        <!-- Pagination -->
-        <div class="flex items-center justify-between">
-          <div class="text-sm text-gray-primary">Всего 85 участников</div>
-          <div class="flex items-center gap-0.5 *:cursor-pointer">
-            <button class="cursor-pointer px-3 py-1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
-                <path fill-rule="evenodd"
-                  d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
-                  clip-rule="evenodd" />
-              </svg>
-            </button>
-            <div class="flex gap-1 *:cursor-pointer">
-              <button class="border-orange-primary text-orange-primary rounded border-1 px-3 py-1">
-                1
+                <tr class="hover:bg-gray-50">
+                  <td>👑</td>
+                  <td>Айдана Ержанова</td>
+                  <td>🇰🇿, Казахстан</td>
+
+                  <td>11</td>
+                  <td>600</td>
+                  <td>600</td>
+                  <td>600</td>
+                  <td>3400</td>
+                </tr>
+
+                <tr class="hover:bg-gray-50">
+                  <td>👑</td>
+                  <td>Айдана Ержанова</td>
+                  <td>🇰🇿, Казахстан</td>
+
+                  <td>11</td>
+                  <td>600</td>
+                  <td>600</td>
+                  <td>600</td>
+                  <td>3400</td>
+                </tr>
+
+                <tr class="hover:bg-gray-50">
+                  <td>4</td>
+                  <td>Айдана Ержанова</td>
+                  <td>🇰🇿, Казахстан</td>
+
+                  <td>11</td>
+                  <td>600</td>
+                  <td>600</td>
+                  <td>600</td>
+                  <td>3400</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+          <div class="flex items-center justify-between">
+            <div class="text-sm text-gray-primary">Всего 85 участников</div>
+            <div class="flex items-center gap-0.5 *:cursor-pointer">
+              <button class="cursor-pointer px-3 py-1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
+                  <path fill-rule="evenodd"
+                    d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
+                    clip-rule="evenodd" />
+                </svg>
               </button>
-              <button class="px-3 py-1 text-gray-600 hover:bg-gray-50">
-                2
-              </button>
-              <button class="px-3 py-1 text-gray-600 hover:bg-gray-50">
-                3
-              </button>
-              <button class="px-3 py-1 text-gray-600 hover:bg-gray-50">
-                4
-              </button>
-              <button class="px-3 py-1 text-gray-600 hover:bg-gray-50">
-                5
+              <div class="flex gap-1 *:cursor-pointer">
+                <button class="border-orange-primary text-orange-primary rounded border-1 px-3 py-1">
+                  1
+                </button>
+                <button class="px-3 py-1 text-gray-600 hover:bg-gray-50">
+                  2
+                </button>
+                <button class="px-3 py-1 text-gray-600 hover:bg-gray-50">
+                  3
+                </button>
+                <button class="px-3 py-1 text-gray-600 hover:bg-gray-50">
+                  4
+                </button>
+                <button class="px-3 py-1 text-gray-600 hover:bg-gray-50">
+                  5
+                </button>
+              </div>
+              <button class="cursor-pointer px-3 py-1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
+                  <path fill-rule="evenodd"
+                    d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
+                    clip-rule="evenodd" />
+                </svg>
               </button>
             </div>
-            <button class="cursor-pointer px-3 py-1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
-                <path fill-rule="evenodd"
-                  d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                  clip-rule="evenodd" />
-              </svg>
-            </button>
           </div>
-        </div>
       </main>
     </div>
   </div>
@@ -440,6 +458,165 @@
       overlay.classList.toggle('hidden')
       modal.classList.toggle('hidden')
     }
+
+
+    // Data for different options
+    const chartDataOptions = {
+      option1: {
+        label: 'Данные вариант 1',
+        data: [90, 60, 40, 30, 80],
+      },
+      option2: {
+        label: 'Данные вариант 2',
+        data: [70, 50, 30, 20, 10],
+      },
+      option3: {
+        label: 'Данные вариант 3',
+        data: [80, 70, 60, 50, 40],
+      },
+    };
+
+    // First Chart - Средний % по странам
+    document.addEventListener('DOMContentLoaded', function () {
+
+      const averageCtx = document.getElementById('averageChart').getContext('2d');
+      let averageChart = new Chart(averageCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Казахстан', 'Узбекистан', 'Турция', 'Кыргызстан', 'Азербайджан'],
+          datasets: [{
+            label: chartDataOptions.option1.label,
+            data: chartDataOptions.option1.data,
+            backgroundColor: [
+              '#459FE3',
+            ],
+            borderWidth: 1,
+            borderRadius: 15,
+            borderSkipped: false,
+          }],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              suggestedMax: 100,
+              stepSize: 20, // Force ticks every 20 units
+              beginAtZero: true,
+              ticks: {
+                stepSize: 20, // Force ticks every 20 units
+                callback: function (value) {
+                  return value === 0 ? 0 : value + ' %'
+                },
+              },
+            },
+            x: {
+              grid: {
+                display: false, // Remove vertical grid lines
+              },
+              ticks: {
+                autoSkip: false,
+              },
+              beginAtZero: true
+            },
+          },
+          barThickness: 40,
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+
+      // Dropdown change handler
+      document.getElementById('dataSelector').addEventListener('change', function () {
+        const selectedOption = this.value;
+
+        // Update chart data based on selection
+        averageChart.data.datasets[0].data = chartDataOptions[selectedOption].data;
+        averageChart.data.datasets[0].label = chartDataOptions[selectedOption].label;
+        averageChart.data.datasets[0].backgroundColor[0] = chartDataOptions[selectedOption].backgroundColor;
+
+        // Update chart
+        averageChart.update();
+      });
+
+
+
+
+      const olympiadSelector = document.getElementById('olympiadSelector');
+      const resultsContainer = document.getElementById('resultsContainer');
+
+      // Данные для разных олимпиад
+      const olympiadData = {
+        math: {
+          countries: [
+            { name: "Казахстан", percent: 35 },
+            { name: "Узбекистан", percent: 45 },
+            { name: "Турция", percent: 65 },
+            { name: "Кыргызстан", percent: 35 },
+            { name: "Азербайджан", percent: 45 }
+          ],
+        },
+        physics: {
+          countries: [
+            { name: "Казахстан", percent: 75 },
+            { name: "Узбекистан", percent: 72 },
+            { name: "Турция", percent: 68 },
+            { name: "Кыргызстан", percent: 65 },
+            { name: "Азербайджан", percent: 60 }
+          ],
+        },
+        chemistry: {
+          countries: [
+            { name: "Казахстан", percent: 80 },
+            { name: "Узбекистан", percent: 78 },
+            { name: "Турция", percent: 75 },
+            { name: "Кыргызстан", percent: 70 },
+            { name: "Азербайджан", percent: 65 }
+          ],
+        },
+        biology: {
+          countries: [
+            { name: "Казахстан", percent: 70 },
+            { name: "Узбекистан", percent: 68 },
+            { name: "Турция", percent: 65 },
+            { name: "Кыргызстан", percent: 62 },
+            { name: "Азербайджан", percent: 60 }
+          ],
+        }
+      };
+
+      // Функция для обновления отображаемых данных
+      function updateResults(olympiadKey) {
+        const data = olympiadData[olympiadKey];
+        const color = data.color;
+
+        let html = '';
+        data.countries.forEach(country => {
+          html += `
+                  <div class="flex justify-between gap-4 items-center p-3">
+                    <p class="font-medium w-40 text-start">${country.name}</p>
+                    <div class="w-full rounded-2xl bg-white flex h-2">
+                      <div style="width: ${country.percent}%" class="bg-green-primary h-full rounded-2xl"></div>
+                    </div>
+                    <span>${country.percent}%</span>
+                  </div>
+                    `;
+        });
+
+        resultsContainer.innerHTML = html;
+      }
+
+      // Обработчик изменения выбора олимпиады
+      olympiadSelector.addEventListener('change', function () {
+        updateResults(this.value);
+      });
+
+      // Инициализация с первым вариантом
+      updateResults(olympiadSelector.value);
+    })
+
   </script>
 </body>
 

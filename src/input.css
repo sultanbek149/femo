@@ -383,8 +383,8 @@ input[type='number'] {
   @apply w-full;
 }
 
-.table-payments tr > td:nth-child(4) div p{
-  @apply truncate max-w-2xs;
+.table-payments tr > td:nth-child(4) div p {
+  @apply max-w-2xs truncate;
 }
 
 :is(.table-overall, .table-payments) tbody td {
