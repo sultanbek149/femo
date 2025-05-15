@@ -309,6 +309,10 @@ input[type='number'] {
   text-align: center;
 }
 
+.tbody-overall tr > td:is(:first-child, :nth-child(2)) {
+  @apply text-center;
+}
+
 .switch-btn {
   @apply border-gray-border cursor-pointer rounded-xl border-1 px-3 py-1.5;
 }
