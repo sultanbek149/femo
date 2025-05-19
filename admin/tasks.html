@@ -250,7 +250,7 @@
         <!-- Dashboard Content -->
         <main class="flex-1 overflow-y-auto p-6">
           <!-- Header -->
-          <div class="mb-6 flex items-center justify-between">
+          <div class="mb-6 flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between">
             <h1 class="text-2xl font-semibold">Управление задачами</h1>
             <div class="flex items-center gap-4">
               <button
@@ -1233,7 +1233,7 @@
                   </td>
                   <td>
                     <div class="flex justify-between gap-2 *:cursor-pointer">
-                      <button class="text-gray-400 hover:text-red-500">
+                      <button type="button" onclick="toggleModal('modalDel')" class="text-gray-400 hover:text-red-500">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           class="h-5 w-5"
@@ -1249,7 +1249,7 @@
                           />
                         </svg>
                       </button>
-                      <button class="hover:text-blue-primary text-gray-400">
+                      <button type="button" onclick="toggleModal('modalEdit')" class="hover:text-blue-primary text-gray-400">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           class="h-5 w-5"
