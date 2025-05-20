@@ -2,14 +2,14 @@
 ;(function checkAuth() {
   const token = localStorage.getItem('access_token')
   if (!token) {
-    window.location.href = '../login.html'
+    window.location.href = '../index.html'
   }
 })()
 
 async function refreshAccessToken() {
   const refreshToken = localStorage.getItem('refresh_token')
   if (!refreshToken) {
-    window.location.href = '../login.html'
+    window.location.href = '../index.html'
     return null
   }
 
@@ -34,7 +34,7 @@ async function refreshAccessToken() {
     return data.access
   } catch (error) {
     console.error('Ошибка обновления токена:', error)
-    window.location.href = '../login.html'
+    window.location.href = '../index.html'
     return null
   }
 }
@@ -43,7 +43,7 @@ async function authorizedFetch(url, options = {}, retry = true) {
   let token = localStorage.getItem('access_token')
 
   if (!token) {
-    window.location.href = '../login.html'
+    window.location.href = '../index.html'
     return
   }
 

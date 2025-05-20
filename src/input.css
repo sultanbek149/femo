@@ -321,6 +321,10 @@ input[type='number'] {
   @apply border-orange-primary text-orange-primary bg-orange-secondary;
 }
 
+.switch-btn:has(input:checked) {
+  @apply border-orange-primary text-orange-primary bg-orange-secondary;
+}
+
 .truncate {
   @apply max-sm:max-w-[7.5rem];
 }
@@ -330,6 +334,10 @@ input[type='number'] {
 }
 
 .btn-switch.active {
+  @apply border-orange-primary text-orange-primary;
+}
+
+.btn-switch:has(input:checked) {
   @apply border-orange-primary text-orange-primary;
 }
 

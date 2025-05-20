@@ -499,6 +499,10 @@
   .inline-block {
     display: inline-block;
   }
+  .size-1 {
+    width: calc(var(--spacing) * 1);
+    height: calc(var(--spacing) * 1);
+  }
   .size-4 {
     width: calc(var(--spacing) * 4);
     height: calc(var(--spacing) * 4);
@@ -2199,6 +2203,11 @@ input[type='number'] {
   background-color: var(--color-orange-secondary);
   color: var(--color-orange-primary);
 }
+.switch-btn:has(input:checked) {
+  border-color: var(--color-orange-primary);
+  background-color: var(--color-orange-secondary);
+  color: var(--color-orange-primary);
+}
 .truncate {
   @media (width < 40rem) {
     max-width: 7.5rem;
@@ -2216,6 +2225,10 @@ input[type='number'] {
   padding-block: calc(var(--spacing) * 2.5);
 }
 .btn-switch.active {
+  border-color: var(--color-orange-primary);
+  color: var(--color-orange-primary);
+}
+.btn-switch:has(input:checked) {
   border-color: var(--color-orange-primary);
   color: var(--color-orange-primary);
 }

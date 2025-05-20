@@ -10,52 +10,34 @@
   <body class="bg-gray-background">
     <div class="mx-auto my-8 max-w-lg rounded-3xl bg-white p-5 shadow-md">
       <div class="mx-auto mb-2 h-64 w-64">
-        <img src="src/assets/images/registerImg.png" alt="reg" />
+        <img src="src/assets/images/loginImg.png" alt="login" />
       </div>
 
       <div class="mb-2 text-center text-2xl font-bold">
-        <p>Добро пожаловать в FEMO!</p>
-        <p>Зарегистрируйся и начни свои приключения</p>
+        <p>Добро пожаловать обратно!</p>
+        <p>Войдите в свой аккаунт и продолжи приключения</p>
       </div>
 
-      <div class="text-primary mb-6 rounded-lg text-center text-sm">
-        Если вам меньше 14 лет, вам потребуется подтверждение от родителя или
-        опекуна.
+      <!-- Ссылка на вход -->
+      <div class="mt-2 mb-8 text-center">
+        <p class="text-sm">
+          Забыли пароль?
+          <a
+            href="reset.html"
+            class="text-blue-primary font-bold underline underline-offset-2"
+            >Восстановить доступ</a
+          >
+        </p>
       </div>
 
       <form class="space-y-6">
         <div>
-          <label class="text-gray-primary mb-1 block text-sm">Кто вы?</label>
-          <select class="input-base border-default custom-select">
-            <option>Участник</option>
-            <option>Тренер</option>
-            <option>Организатор</option>
-            <option>Родитель</option>
-          </select>
-        </div>
-
-        <div>
           <label class="text-gray-primary mb-1 block text-sm">Email</label>
-          <input
-            type="email"
-            placeholder="Ivani.varavo@example.com"
-            class="input-base border-default"
-          />
-        </div>
-
-        <div>
-          <label class="text-gray-primary mb-1 block text-sm">ФИО</label>
-          <input
-            type="text"
-            placeholder="Айжан Ахметова"
-            class="input-base border-default"
-          />
+          <input type="email" class="input-base border-default" />
         </div>
 
         <div class="relative">
-          <label class="text-primary mb-1 block text-sm"
-            >Придумайте пароль</label
-          >
+          <label class="text-primary mb-1 block text-sm">Пароль</label>
           <input
             id="password"
             type="password"
@@ -65,7 +47,7 @@
           <button
             type="button"
             data-target="password"
-            class="toggle-pw text-gray-primary hover:text-primary absolute top-1/2 right-2 mt-0.5 -translate-y-1/2 transform cursor-pointer"
+            class="toggle-pw text-gray-primary hover:text-primary absolute top-1/2 right-2 cursor-pointer"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -82,42 +64,27 @@
               />
             </svg>
           </button>
-          <p class="text-gray-primary mt-1 text-xs">
-            8 или более символов, включающие буквы, цифры и символы
-          </p>
         </div>
 
         <button
           type="submit"
-          class="bg-orange-primary w-full cursor-pointer rounded-xl py-2 text-white transition"
+          class="bg-orange-primary w-full cursor-pointer rounded-full py-3 font-bold text-white transition"
         >
-          Зарегистрироваться и начать
+          Войти
         </button>
-
-        <p class="text-gray-primary text-center text-sm">
-          Создавая ученику о запись, вы соглашаетесь с
-          <a href="#" class="underline underline-offset-2"
-            >Условиями использования</a
-          >
-          и
-          <a href="#" class="underline underline-offset-2"
-            >Практикой конфиденциальности</a
-          >.
-        </p>
       </form>
 
-      <!-- Ссылка на вход -->
       <div class="mt-6 text-center">
         <p class="text-sm text-gray-600">
-          Уже есть аккаунт?
+          Нет аккаунта?
           <a
-            href="login.html"
+            href="index.html"
             class="text-orange-primary font-bold underline underline-offset-2"
-            >Войти</a
+            >Зарегистрироваться</a
           >
         </p>
       </div>
     </div>
   </body>
 </html>
-<script defer src="register.js"></script>
+<script defer src="login.js"></script>
